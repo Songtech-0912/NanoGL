@@ -1346,7 +1346,7 @@ pub struct timeval {
 }
 pub type __time_t = libc::c_long;
 #[inline]
-unsafe extern "C" fn tigrRGB(
+pub unsafe extern "C" fn tigrRGB(
     mut r: libc::c_uchar,
     mut g: libc::c_uchar,
     mut b: libc::c_uchar,

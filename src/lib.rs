@@ -11,32 +11,30 @@
 #![feature(register_tool)]
 #![register_tool(c2rust)]
 
-mod tigr;
-
+pub mod tigr;
 use libc;
-
 extern "C" {
-    fn tigrWindow(
-        w: libc::c_int,
-        h: libc::c_int,
-        title: *const libc::c_char,
-        flags: libc::c_int,
-    ) -> *mut Tigr;
-    fn tigrFree(bmp: *mut Tigr);
-    fn tigrClosed(bmp: *mut Tigr) -> libc::c_int;
-    fn tigrUpdate(bmp: *mut Tigr);
-    fn tigrClear(bmp: *mut Tigr, color: TPixel);
-    fn tigrPrint(
-        dest: *mut Tigr,
-        font: *mut TigrFont,
-        x: libc::c_int,
-        y: libc::c_int,
-        color: TPixel,
-        text: *const libc::c_char,
-        _: ...
-    );
-    static mut tfont: *mut TigrFont;
+    pub fn tigrWindow(
+            w: libc::c_int,
+            h: libc::c_int,
+            title: *const libc::c_char,
+            flags: libc::c_int,
+        ) -> *mut Tigr;
+    pub fn tigrFree(bmp: *mut Tigr);
+    pub fn tigrClosed(bmp: *mut Tigr) -> libc::c_int;
+    pub fn tigrUpdate(bmp: *mut Tigr);
+    pub fn tigrClear(bmp: *mut Tigr, color: TPixel);
+    pub fn tigrPrint(
+            dest: *mut Tigr,
+            font: *mut TigrFont,
+            x: libc::c_int,
+            y: libc::c_int,
+            color: TPixel,
+            text: *const libc::c_char,
+            _: ...
+        );
 }
+
 #[derive(Copy, Clone)]
 #[repr(C)]
 pub struct TPixel {
@@ -86,59 +84,4 @@ unsafe extern "C" fn tigrRGB(
     p.b = b;
     p.a = 0xff as libc::c_int as libc::c_uchar;
     return p;
-}
-unsafe fn main_0(
-    mut _argc: libc::c_int,
-    mut _argv: *mut *mut libc::c_char,
-) -> libc::c_int {
-    let mut window: *mut Tigr = tigrWindow(
-        320 as libc::c_int,
-        240 as libc::c_int,
-        b"Window1\0" as *const u8 as *const libc::c_char,
-        0 as libc::c_int,
-    );
-    while tigrClosed(window) == 0 {
-        tigrClear(
-            window,
-            tigrRGB(
-                0x80 as libc::c_int as libc::c_uchar,
-                0x90 as libc::c_int as libc::c_uchar,
-                0xa0 as libc::c_int as libc::c_uchar,
-            ),
-        );
-        tigrPrint(
-            window,
-            tfont,
-            120 as libc::c_int,
-            110 as libc::c_int,
-            tigrRGB(
-                0xff as libc::c_int as libc::c_uchar,
-                0xff as libc::c_int as libc::c_uchar,
-                0xff as libc::c_int as libc::c_uchar,
-            ),
-            b"Hello, world #1.\0" as *const u8 as *const libc::c_char,
-        );
-        tigrUpdate(window);
-    }
-    tigrFree(window);
-    return 0 as libc::c_int;
-}
-pub fn main() {
-    let mut args: Vec::<*mut libc::c_char> = Vec::new();
-    for arg in ::std::env::args() {
-        args.push(
-            (::std::ffi::CString::new(arg))
-                .expect("Failed to convert argument into CString.")
-                .into_raw(),
-        );
-    }
-    args.push(::core::ptr::null_mut());
-    unsafe {
-        ::std::process::exit(
-            main_0(
-                (args.len() - 1) as libc::c_int,
-                args.as_mut_ptr() as *mut *mut libc::c_char,
-            ) as i32,
-        )
-    }
 }
