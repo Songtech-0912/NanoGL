@@ -11,8 +11,33 @@
 #![feature(register_tool)]
 #![register_tool(c2rust)]
 
+// Add in once cffi is done
+// pub mod cffi;
 pub mod tigr;
-use libc;
+
+pub const GL_VERTEX_SHADER: u32 = 0x8B31 as libc::c_int as tigr::GLenum;
+pub const GL_FRAGMENT_SHADER: u32 = 0x8B30 as libc::c_int as tigr::GLenum;
+
+// pub fn get_opengl_version() {}
+
+// pub fn get_glsl_version() {}
+
+pub fn create_vertex_shader() -> tigr::GLenum {
+    unsafe { tigr::glCreateShader(GL_VERTEX_SHADER) }
+}
+
+pub fn create_fragment_shader() -> tigr::GLenum {
+    unsafe { tigr::glCreateShader(GL_FRAGMENT_SHADER) }
+}
+
+// pub fn create_shader_program(vertex_src, fragment_src) {}
+
+pub fn create_vao() {
+    let mut vao = 0;
+    unsafe { tigr::glGenVertexArrays(1, &mut vao) };
+}
+
+// pub fn create_vbo(vertices: &[f32]) {}
 
 pub struct RGBColor(pub i32, pub i32, pub i32);
 

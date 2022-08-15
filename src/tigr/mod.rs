@@ -1,4 +1,5 @@
-use ::libc;
+use libc;
+
 extern "C" {
     pub type __GLXcontextRec;
     pub type _XIC;
@@ -128,47 +129,47 @@ extern "C" {
     ) -> libc::c_int;
     fn XCreateIC(_: XIM, _: ...) -> XIC;
     fn XSetICFocus(_: XIC);
-    fn glBindBuffer(target: GLenum, buffer: GLuint);
-    fn glGenBuffers(n: GLsizei, buffers: *mut GLuint);
-    fn glBufferData(target: GLenum, size: GLsizeiptr, data: *const libc::c_void, usage: GLenum);
-    fn glAttachShader(program: GLuint, shader: GLuint);
-    fn glCompileShader(shader: GLuint);
-    fn glCreateProgram() -> GLuint;
-    fn glCreateShader(type_0: GLenum) -> GLuint;
-    fn glDeleteProgram(program: GLuint);
-    fn glDeleteShader(shader: GLuint);
-    fn glEnableVertexAttribArray(index: GLuint);
-    fn glGetProgramiv(program: GLuint, pname: GLenum, params: *mut GLint);
-    fn glGetProgramInfoLog(
+    pub fn glBindBuffer(target: GLenum, buffer: GLuint);
+    pub fn glGenBuffers(n: GLsizei, buffers: *mut GLuint);
+    pub fn glBufferData(target: GLenum, size: GLsizeiptr, data: *const libc::c_void, usage: GLenum);
+    pub fn glAttachShader(program: GLuint, shader: GLuint);
+    pub fn glCompileShader(shader: GLuint);
+    pub fn glCreateProgram() -> GLuint;
+    pub fn glCreateShader(type_0: GLenum) -> GLuint;
+    pub fn glDeleteProgram(program: GLuint);
+    pub fn glDeleteShader(shader: GLuint);
+    pub fn glEnableVertexAttribArray(index: GLuint);
+    pub fn glGetProgramiv(program: GLuint, pname: GLenum, params: *mut GLint);
+    pub fn glGetProgramInfoLog(
         program: GLuint,
         bufSize: GLsizei,
         length: *mut GLsizei,
         infoLog: *mut GLchar,
     );
-    fn glGetShaderiv(shader: GLuint, pname: GLenum, params: *mut GLint);
-    fn glGetShaderInfoLog(
+    pub fn glGetShaderiv(shader: GLuint, pname: GLenum, params: *mut GLint);
+    pub fn glGetShaderInfoLog(
         shader: GLuint,
         bufSize: GLsizei,
         length: *mut GLsizei,
         infoLog: *mut GLchar,
     );
-    fn glGetUniformLocation(program: GLuint, name: *const GLchar) -> GLint;
-    fn glLinkProgram(program: GLuint);
-    fn glShaderSource(
+    pub fn glGetUniformLocation(program: GLuint, name: *const GLchar) -> GLint;
+    pub fn glLinkProgram(program: GLuint);
+    pub fn glShaderSource(
         shader: GLuint,
         count: GLsizei,
         string: *const *const GLchar,
         length: *const GLint,
     );
-    fn glUseProgram(program: GLuint);
-    fn glUniform4f(location: GLint, v0: GLfloat, v1: GLfloat, v2: GLfloat, v3: GLfloat);
-    fn glUniformMatrix4fv(
+    pub fn glUseProgram(program: GLuint);
+    pub fn glUniform4f(location: GLint, v0: GLfloat, v1: GLfloat, v2: GLfloat, v3: GLfloat);
+    pub fn glUniformMatrix4fv(
         location: GLint,
         count: GLsizei,
         transpose: GLboolean,
         value: *const GLfloat,
     );
-    fn glVertexAttribPointer(
+    pub fn glVertexAttribPointer(
         index: GLuint,
         size: GLint,
         type_0: GLenum,
@@ -176,19 +177,19 @@ extern "C" {
         stride: GLsizei,
         pointer: *const libc::c_void,
     );
-    fn glBindVertexArray(array: GLuint);
-    fn glGenVertexArrays(n: GLsizei, arrays: *mut GLuint);
-    fn glTexParameteri(target: GLenum, pname: GLenum, param: GLint);
-    fn glBindTexture(target: GLenum, texture: GLuint);
-    fn glGenTextures(n: GLsizei, textures: *mut GLuint);
-    fn glEnable(cap: GLenum);
-    fn glViewport(x: GLint, y: GLint, width: GLsizei, height: GLsizei);
-    fn glClearColor(red: GLclampf, green: GLclampf, blue: GLclampf, alpha: GLclampf);
-    fn glClear(mask: GLbitfield);
-    fn glActiveTexture(texture: GLenum);
-    fn glMatrixMode(mode: GLenum);
-    fn glLoadIdentity();
-    fn glOrtho(
+    pub fn glBindVertexArray(array: GLuint);
+    pub fn glGenVertexArrays(n: GLsizei, arrays: *mut GLuint);
+    pub fn glTexParameteri(target: GLenum, pname: GLenum, param: GLint);
+    pub fn glBindTexture(target: GLenum, texture: GLuint);
+    pub fn glGenTextures(n: GLsizei, textures: *mut GLuint);
+    pub fn glEnable(cap: GLenum);
+    pub fn glViewport(x: GLint, y: GLint, width: GLsizei, height: GLsizei);
+    pub fn glClearColor(red: GLclampf, green: GLclampf, blue: GLclampf, alpha: GLclampf);
+    pub fn glClear(mask: GLbitfield);
+    pub fn glActiveTexture(texture: GLenum);
+    pub fn glMatrixMode(mode: GLenum);
+    pub fn glLoadIdentity();
+    pub fn glOrtho(
         left: GLdouble,
         right: GLdouble,
         bottom: GLdouble,
@@ -196,9 +197,9 @@ extern "C" {
         near_val: GLdouble,
         far_val: GLdouble,
     );
-    fn glDisable(cap: GLenum);
-    fn glBlendFunc(sfactor: GLenum, dfactor: GLenum);
-    fn glTexImage2D(
+    pub fn glDisable(cap: GLenum);
+    pub fn glBlendFunc(sfactor: GLenum, dfactor: GLenum);
+    pub fn glTexImage2D(
         target: GLenum,
         level: GLint,
         internalFormat: GLint,
@@ -209,26 +210,33 @@ extern "C" {
         type_0: GLenum,
         pixels: *const libc::c_void,
     );
-    fn glDrawArrays(mode: GLenum, first: GLint, count: GLsizei);
-    fn glBegin(mode: GLenum);
-    fn glTexCoord2f(s: GLfloat, t: GLfloat);
-    fn glVertex2i(x: GLint, y: GLint);
-    fn glEnd();
-    fn glGetError() -> GLenum;
-    fn glPixelStorei(pname: GLenum, param: GLint);
-    fn glDeleteTextures(n: GLsizei, textures: *const GLuint);
+    pub fn glDrawArrays(mode: GLenum, first: GLint, count: GLsizei);
+    pub fn glBegin(mode: GLenum);
+    pub fn glTexCoord2f(s: GLfloat, t: GLfloat);
+    pub fn glVertex2i(x: GLint, y: GLint);
+    pub fn glEnd();
+    pub fn glGetError() -> GLenum;
+    pub fn glPixelStorei(pname: GLenum, param: GLint);
+    pub fn glDeleteTextures(n: GLsizei, textures: *const GLuint);
     fn XSetTextProperty(_: *mut Display, _: Window, _: *mut XTextProperty, _: Atom);
-    fn glXSwapBuffers(dpy_0: *mut Display, drawable: GLXDrawable);
-    fn glXMakeCurrent(dpy_0: *mut Display, drawable: GLXDrawable, ctx: GLXContext) -> libc::c_int;
-    fn glXChooseFBConfig(
+    pub fn glXSwapBuffers(dpy_0: *mut Display, drawable: GLXDrawable);
+    pub fn glXMakeCurrent(
+        dpy_0: *mut Display,
+        drawable: GLXDrawable,
+        ctx: GLXContext,
+    ) -> libc::c_int;
+    pub fn glXChooseFBConfig(
         dpy_0: *mut Display,
         screen: libc::c_int,
         attribList: *const libc::c_int,
         nitems: *mut libc::c_int,
     ) -> *mut GLXFBConfig;
-    fn glXGetVisualFromFBConfig(dpy_0: *mut Display, config: GLXFBConfig) -> *mut XVisualInfo;
-    fn glXDestroyContext(dpy_0: *mut Display, ctx: GLXContext);
-    fn glXQueryExtensionsString(dpy_0: *mut Display, screen: libc::c_int) -> *const libc::c_char;
+    pub fn glXGetVisualFromFBConfig(dpy_0: *mut Display, config: GLXFBConfig) -> *mut XVisualInfo;
+    pub fn glXDestroyContext(dpy_0: *mut Display, ctx: GLXContext);
+    pub fn glXQueryExtensionsString(
+        dpy_0: *mut Display,
+        screen: libc::c_int,
+    ) -> *const libc::c_char;
     fn Xutf8TextListToTextProperty(
         display: *mut Display,
         list: *mut *mut libc::c_char,
@@ -236,13 +244,13 @@ extern "C" {
         style: XICCEncodingStyle,
         text_prop_return: *mut XTextProperty,
     ) -> libc::c_int;
-    fn glXCreateContext(
+    pub fn glXCreateContext(
         dpy_0: *mut Display,
         vis: *mut XVisualInfo,
         shareList: GLXContext,
         direct: libc::c_int,
     ) -> GLXContext;
-    fn glXGetProcAddressARB(_: *const GLubyte) -> __GLXextFuncPtr;
+    pub fn glXGetProcAddressARB(_: *const GLubyte) -> __GLXextFuncPtr;
     fn malloc(_: libc::c_ulong) -> *mut libc::c_void;
     fn calloc(_: libc::c_ulong, _: libc::c_ulong) -> *mut libc::c_void;
     fn realloc(_: *mut libc::c_void, _: libc::c_ulong) -> *mut libc::c_void;
