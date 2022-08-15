@@ -21,7 +21,7 @@ pub struct GLWindow {
     height: i32,
     title: String,
     flag: i32,
-    window_ptr: *mut tigr::Tigr
+    window_ptr: *mut tigr::Tigr,
 }
 
 impl GLWindow {
@@ -39,7 +39,7 @@ impl GLWindow {
             height: height,
             title: String::from(title),
             flag: flag,
-            window_ptr: window_ptr
+            window_ptr: window_ptr,
         }
     }
 
@@ -56,13 +56,17 @@ impl GLWindow {
     }
 
     pub fn is_running(&self) -> bool {
-        unsafe {
-            tigr::tigrClosed(self.window_ptr) as i32 == 0
-        }
+        unsafe { tigr::tigrClosed(self.window_ptr) as i32 == 0 }
     }
 
-    pub fn print_bitmap(&self, font: *mut tigr::TigrFont, x: i32, y: i32, color: RGBColor, text: &str)
-    {
+    pub fn print_bitmap(
+        &self,
+        font: *mut tigr::TigrFont,
+        x: i32,
+        y: i32,
+        color: RGBColor,
+        text: &str,
+    ) {
         unsafe {
             tigr::tigrPrint(
                 self.window_ptr,
@@ -70,7 +74,7 @@ impl GLWindow {
                 x as libc::c_int,
                 y as libc::c_int,
                 rgb(color.0, color.1, color.2),
-                text.as_bytes().as_ptr() as *const libc::c_char
+                text.as_bytes().as_ptr() as *const libc::c_char,
             );
         }
     }
@@ -87,8 +91,7 @@ pub fn rgb(r: i32, g: i32, b: i32) -> tigr::TPixel {
         tigr::tigrRGB(
             r as libc::c_int as libc::c_uchar,
             g as libc::c_int as libc::c_uchar,
-            b as libc::c_int as libc::c_uchar
+            b as libc::c_int as libc::c_uchar,
         )
     }
 }
-

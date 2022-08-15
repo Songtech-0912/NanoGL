@@ -13,12 +13,7 @@ extern "C" {
     pub type _IO_marker;
     fn XOpenDisplay(_: *const libc::c_char) -> *mut Display;
     fn XInternAtom(_: *mut Display, _: *const libc::c_char, _: libc::c_int) -> Atom;
-    fn XCreateColormap(
-        _: *mut Display,
-        _: Window,
-        _: *mut Visual,
-        _: libc::c_int,
-    ) -> Colormap;
+    fn XCreateColormap(_: *mut Display, _: Window, _: *mut Visual, _: libc::c_int) -> Colormap;
     fn XCreatePixmapCursor(
         _: *mut Display,
         _: Pixmap,
@@ -49,12 +44,7 @@ extern "C" {
         _: libc::c_ulong,
         _: *mut XSetWindowAttributes,
     ) -> Window;
-    fn XSetWMProtocols(
-        _: *mut Display,
-        _: Window,
-        _: *mut Atom,
-        _: libc::c_int,
-    ) -> libc::c_int;
+    fn XSetWMProtocols(_: *mut Display, _: Window, _: *mut Atom, _: libc::c_int) -> libc::c_int;
     fn XChangeProperty(
         _: *mut Display,
         _: Window,
@@ -77,16 +67,8 @@ extern "C" {
     fn XFree(_: *mut libc::c_void) -> libc::c_int;
     fn XFreeCursor(_: *mut Display, _: Cursor) -> libc::c_int;
     fn XFreePixmap(_: *mut Display, _: Pixmap) -> libc::c_int;
-    fn XGetInputFocus(
-        _: *mut Display,
-        _: *mut Window,
-        _: *mut libc::c_int,
-    ) -> libc::c_int;
-    fn XGetWindowAttributes(
-        _: *mut Display,
-        _: Window,
-        _: *mut XWindowAttributes,
-    ) -> libc::c_int;
+    fn XGetInputFocus(_: *mut Display, _: *mut Window, _: *mut libc::c_int) -> libc::c_int;
+    fn XGetWindowAttributes(_: *mut Display, _: Window, _: *mut XWindowAttributes) -> libc::c_int;
     fn XGrabKeyboard(
         _: *mut Display,
         _: Window,
@@ -129,12 +111,7 @@ extern "C" {
         _: *mut libc::c_int,
         _: *mut libc::c_uint,
     ) -> libc::c_int;
-    fn XResizeWindow(
-        _: *mut Display,
-        _: Window,
-        _: libc::c_uint,
-        _: libc::c_uint,
-    ) -> libc::c_int;
+    fn XResizeWindow(_: *mut Display, _: Window, _: libc::c_uint, _: libc::c_uint) -> libc::c_int;
     fn XOpenIM(
         _: *mut Display,
         _: *mut _XrmHashBucketRec,
@@ -153,12 +130,7 @@ extern "C" {
     fn XSetICFocus(_: XIC);
     fn glBindBuffer(target: GLenum, buffer: GLuint);
     fn glGenBuffers(n: GLsizei, buffers: *mut GLuint);
-    fn glBufferData(
-        target: GLenum,
-        size: GLsizeiptr,
-        data: *const libc::c_void,
-        usage: GLenum,
-    );
+    fn glBufferData(target: GLenum, size: GLsizeiptr, data: *const libc::c_void, usage: GLenum);
     fn glAttachShader(program: GLuint, shader: GLuint);
     fn glCompileShader(shader: GLuint);
     fn glCreateProgram() -> GLuint;
@@ -247,26 +219,16 @@ extern "C" {
     fn glDeleteTextures(n: GLsizei, textures: *const GLuint);
     fn XSetTextProperty(_: *mut Display, _: Window, _: *mut XTextProperty, _: Atom);
     fn glXSwapBuffers(dpy_0: *mut Display, drawable: GLXDrawable);
-    fn glXMakeCurrent(
-        dpy_0: *mut Display,
-        drawable: GLXDrawable,
-        ctx: GLXContext,
-    ) -> libc::c_int;
+    fn glXMakeCurrent(dpy_0: *mut Display, drawable: GLXDrawable, ctx: GLXContext) -> libc::c_int;
     fn glXChooseFBConfig(
         dpy_0: *mut Display,
         screen: libc::c_int,
         attribList: *const libc::c_int,
         nitems: *mut libc::c_int,
     ) -> *mut GLXFBConfig;
-    fn glXGetVisualFromFBConfig(
-        dpy_0: *mut Display,
-        config: GLXFBConfig,
-    ) -> *mut XVisualInfo;
+    fn glXGetVisualFromFBConfig(dpy_0: *mut Display, config: GLXFBConfig) -> *mut XVisualInfo;
     fn glXDestroyContext(dpy_0: *mut Display, ctx: GLXContext);
-    fn glXQueryExtensionsString(
-        dpy_0: *mut Display,
-        screen: libc::c_int,
-    ) -> *const libc::c_char;
+    fn glXQueryExtensionsString(dpy_0: *mut Display, screen: libc::c_int) -> *const libc::c_char;
     fn Xutf8TextListToTextProperty(
         display: *mut Display,
         list: *mut *mut libc::c_char,
@@ -287,21 +249,9 @@ extern "C" {
     fn free(_: *mut libc::c_void);
     fn exit(_: libc::c_int) -> !;
     fn abs(_: libc::c_int) -> libc::c_int;
-    fn memcpy(
-        _: *mut libc::c_void,
-        _: *const libc::c_void,
-        _: libc::c_ulong,
-    ) -> *mut libc::c_void;
-    fn memset(
-        _: *mut libc::c_void,
-        _: libc::c_int,
-        _: libc::c_ulong,
-    ) -> *mut libc::c_void;
-    fn memcmp(
-        _: *const libc::c_void,
-        _: *const libc::c_void,
-        _: libc::c_ulong,
-    ) -> libc::c_int;
+    fn memcpy(_: *mut libc::c_void, _: *const libc::c_void, _: libc::c_ulong) -> *mut libc::c_void;
+    fn memset(_: *mut libc::c_void, _: libc::c_int, _: libc::c_ulong) -> *mut libc::c_void;
+    fn memcmp(_: *const libc::c_void, _: *const libc::c_void, _: libc::c_ulong) -> libc::c_int;
     fn strcmp(_: *const libc::c_char, _: *const libc::c_char) -> libc::c_int;
     fn strdup(_: *const libc::c_char) -> *mut libc::c_char;
     fn strtok(_: *mut libc::c_char, _: *const libc::c_char) -> *mut libc::c_char;
@@ -328,11 +278,7 @@ extern "C" {
         _: libc::c_ulong,
         _: *mut FILE,
     ) -> libc::c_ulong;
-    fn fseek(
-        __stream: *mut FILE,
-        __off: libc::c_long,
-        __whence: libc::c_int,
-    ) -> libc::c_int;
+    fn fseek(__stream: *mut FILE, __off: libc::c_long, __whence: libc::c_int) -> libc::c_int;
     fn ftell(__stream: *mut FILE) -> libc::c_long;
     fn ferror(__stream: *mut FILE) -> libc::c_int;
     fn _setjmp(_: *mut __jmp_buf_tag) -> libc::c_int;
@@ -344,12 +290,7 @@ extern "C" {
         __function: *const libc::c_char,
     ) -> !;
     fn gettimeofday(__tv: *mut timeval, __tz: *mut libc::c_void) -> libc::c_int;
-    fn XkbKeycodeToKeysym(
-        _: *mut Display,
-        _: KeyCode,
-        _: libc::c_int,
-        _: libc::c_int,
-    ) -> KeySym;
+    fn XkbKeycodeToKeysym(_: *mut Display, _: KeyCode, _: libc::c_int, _: libc::c_int) -> KeySym;
 }
 pub type __builtin_va_list = [__va_list_tag; 1];
 #[derive(Copy, Clone)]
@@ -451,10 +392,8 @@ pub struct XColor {
 }
 pub type Drawable = XID;
 pub const TIGR_BLEND_ALPHA: TIGRBlitMode = 1;
-pub type PFNGLXSWAPINTERVALSGIPROC = Option::<
-    unsafe extern "C" fn(libc::c_int) -> libc::c_int,
->;
-pub type __GLXextFuncPtr = Option::<unsafe extern "C" fn() -> ()>;
+pub type PFNGLXSWAPINTERVALSGIPROC = Option<unsafe extern "C" fn(libc::c_int) -> libc::c_int>;
+pub type __GLXextFuncPtr = Option<unsafe extern "C" fn() -> ()>;
 pub type GLubyte = libc::c_uchar;
 pub type _XPrivDisplay = *mut C2RustUnnamed;
 #[derive(Copy, Clone)]
@@ -471,7 +410,7 @@ pub struct C2RustUnnamed {
     pub private4: XID,
     pub private5: XID,
     pub private6: libc::c_int,
-    pub resource_alloc: Option::<unsafe extern "C" fn(*mut _XDisplay) -> XID>,
+    pub resource_alloc: Option<unsafe extern "C" fn(*mut _XDisplay) -> XID>,
     pub byte_order: libc::c_int,
     pub bitmap_unit: libc::c_int,
     pub bitmap_pad: libc::c_int,
@@ -491,7 +430,7 @@ pub struct C2RustUnnamed {
     pub private14: XPointer,
     pub max_request_size: libc::c_uint,
     pub db: *mut _XrmHashBucketRec,
-    pub private15: Option::<unsafe extern "C" fn(*mut _XDisplay) -> libc::c_int>,
+    pub private15: Option<unsafe extern "C" fn(*mut _XDisplay) -> libc::c_int>,
     pub display_name: *mut libc::c_char,
     pub default_screen: libc::c_int,
     pub nscreens: libc::c_int,
@@ -551,7 +490,7 @@ pub type XExtData = _XExtData;
 pub struct _XExtData {
     pub number: libc::c_int,
     pub next: *mut _XExtData,
-    pub free_private: Option::<unsafe extern "C" fn(*mut _XExtData) -> libc::c_int>,
+    pub free_private: Option<unsafe extern "C" fn(*mut _XExtData) -> libc::c_int>,
     pub private_data: XPointer,
 }
 #[derive(Copy, Clone)]
@@ -569,14 +508,11 @@ pub struct ScreenFormat {
     pub bits_per_pixel: libc::c_int,
     pub scanline_pad: libc::c_int,
 }
-pub type PFNGLXSWAPINTERVALMESAPROC = Option::<
-    unsafe extern "C" fn(libc::c_uint) -> libc::c_int,
->;
-pub type PFNGLXSWAPINTERVALEXTPROC = Option::<
-    unsafe extern "C" fn(*mut Display, GLXDrawable, libc::c_int) -> (),
->;
+pub type PFNGLXSWAPINTERVALMESAPROC = Option<unsafe extern "C" fn(libc::c_uint) -> libc::c_int>;
+pub type PFNGLXSWAPINTERVALEXTPROC =
+    Option<unsafe extern "C" fn(*mut Display, GLXDrawable, libc::c_int) -> ()>;
 pub type GLXFBConfig = *mut __GLXFBConfigRec;
-pub type PFNGLXCREATECONTEXTATTRIBSARBPROC = Option::<
+pub type PFNGLXCREATECONTEXTATTRIBSARBPROC = Option<
     unsafe extern "C" fn(
         *mut Display,
         GLXFBConfig,
@@ -1351,7 +1287,12 @@ pub unsafe extern "C" fn tigrRGB(
     mut g: libc::c_uchar,
     mut b: libc::c_uchar,
 ) -> TPixel {
-    let mut p: TPixel = TPixel { r: 0, g: 0, b: 0, a: 0 };
+    let mut p: TPixel = TPixel {
+        r: 0,
+        g: 0,
+        b: 0,
+        a: 0,
+    };
     p.r = r;
     p.g = g;
     p.b = b;
@@ -1365,7 +1306,12 @@ unsafe extern "C" fn tigrRGBA(
     mut b: libc::c_uchar,
     mut a: libc::c_uchar,
 ) -> TPixel {
-    let mut p: TPixel = TPixel { r: 0, g: 0, b: 0, a: 0 };
+    let mut p: TPixel = TPixel {
+        r: 0,
+        g: 0,
+        b: 0,
+        a: 0,
+    };
     p.r = r;
     p.g = g;
     p.b = b;
@@ -1382,8 +1328,9 @@ pub static mut tigr_upscale_gl_vs: [libc::c_char; 235] = unsafe {
     )
 };
 #[no_mangle]
-pub static mut tigr_upscale_gl_vs_size: libc::c_int = ::core::mem::size_of::<[libc::c_char; 235]>() as libc::c_ulong as libc::c_int
-        - 1 as libc::c_int;
+pub static mut tigr_upscale_gl_vs_size: libc::c_int = ::core::mem::size_of::<[libc::c_char; 235]>()
+    as libc::c_ulong as libc::c_int
+    - 1 as libc::c_int;
 #[no_mangle]
 pub static mut tigr_upscale_gl_fs: [libc::c_char; 175] = unsafe {
     *::core::mem::transmute::<
@@ -1394,8 +1341,9 @@ pub static mut tigr_upscale_gl_fs: [libc::c_char; 175] = unsafe {
     )
 };
 #[no_mangle]
-pub static mut tigr_upscale_gl_fs_size: libc::c_int = ::core::mem::size_of::<[libc::c_char; 175]>() as libc::c_ulong as libc::c_int
-        - 1 as libc::c_int;
+pub static mut tigr_upscale_gl_fs_size: libc::c_int = ::core::mem::size_of::<[libc::c_char; 175]>()
+    as libc::c_ulong as libc::c_int
+    - 1 as libc::c_int;
 #[no_mangle]
 pub static mut tigr_default_fx_gl_fs: [libc::c_char; 368] = unsafe {
     *::core::mem::transmute::<
@@ -1406,7 +1354,8 @@ pub static mut tigr_default_fx_gl_fs: [libc::c_char; 368] = unsafe {
     )
 };
 #[no_mangle]
-pub static mut tigr_default_fx_gl_fs_size: libc::c_int = ::core::mem::size_of::<[libc::c_char; 368]>() as libc::c_ulong as libc::c_int
+pub static mut tigr_default_fx_gl_fs_size: libc::c_int =
+    ::core::mem::size_of::<[libc::c_char; 368]>() as libc::c_ulong as libc::c_int
         - 1 as libc::c_int;
 #[no_mangle]
 pub unsafe extern "C" fn tigrBitmap2(
@@ -1416,15 +1365,13 @@ pub unsafe extern "C" fn tigrBitmap2(
 ) -> *mut Tigr {
     let mut tigr: *mut Tigr = calloc(
         1 as libc::c_int as libc::c_ulong,
-        (::core::mem::size_of::<Tigr>() as libc::c_ulong)
-            .wrapping_add(extra as libc::c_ulong),
+        (::core::mem::size_of::<Tigr>() as libc::c_ulong).wrapping_add(extra as libc::c_ulong),
     ) as *mut Tigr;
     (*tigr).w = w;
     (*tigr).h = h;
     (*tigr).cw = -(1 as libc::c_int);
     (*tigr).ch = -(1 as libc::c_int);
-    (*tigr)
-        .pix = calloc(
+    (*tigr).pix = calloc(
         (w * h) as libc::c_ulong,
         ::core::mem::size_of::<TPixel>() as libc::c_ulong,
     ) as *mut TPixel;
@@ -1432,18 +1379,11 @@ pub unsafe extern "C" fn tigrBitmap2(
     return tigr;
 }
 #[no_mangle]
-pub unsafe extern "C" fn tigrBitmap(
-    mut w: libc::c_int,
-    mut h: libc::c_int,
-) -> *mut Tigr {
+pub unsafe extern "C" fn tigrBitmap(mut w: libc::c_int, mut h: libc::c_int) -> *mut Tigr {
     return tigrBitmap2(w, h, 0 as libc::c_int);
 }
 #[no_mangle]
-pub unsafe extern "C" fn tigrResize(
-    mut bmp: *mut Tigr,
-    mut w: libc::c_int,
-    mut h: libc::c_int,
-) {
+pub unsafe extern "C" fn tigrResize(mut bmp: *mut Tigr, mut w: libc::c_int, mut h: libc::c_int) {
     if (*bmp).w == w && (*bmp).h == h {
         return;
     }
@@ -1461,8 +1401,7 @@ pub unsafe extern "C" fn tigrResize(
         memcpy(
             newpix.offset((y * w) as isize) as *mut libc::c_void,
             ((*bmp).pix).offset((y * (*bmp).w) as isize) as *const libc::c_void,
-            (cw as libc::c_ulong)
-                .wrapping_mul(::core::mem::size_of::<TPixel>() as libc::c_ulong),
+            (cw as libc::c_ulong).wrapping_mul(::core::mem::size_of::<TPixel>() as libc::c_ulong),
         );
         y += 1;
     }
@@ -1487,7 +1426,11 @@ pub unsafe extern "C" fn tigrCalcScale(
         scale -= 1;
         break;
     }
-    return if scale > 1 as libc::c_int { scale } else { 1 as libc::c_int };
+    return if scale > 1 as libc::c_int {
+        scale
+    } else {
+        1 as libc::c_int
+    };
 }
 #[no_mangle]
 pub unsafe extern "C" fn tigrEnforceScale(
@@ -1513,22 +1456,12 @@ pub unsafe extern "C" fn tigrPosition(
     mut windowH: libc::c_int,
     mut out: *mut libc::c_int,
 ) {
-    *out
-        .offset(
-            0 as libc::c_int as isize,
-        ) = (windowW - (*bmp).w * scale) / 2 as libc::c_int;
-    *out
-        .offset(
-            1 as libc::c_int as isize,
-        ) = (windowH - (*bmp).h * scale) / 2 as libc::c_int;
-    *out
-        .offset(
-            2 as libc::c_int as isize,
-        ) = *out.offset(0 as libc::c_int as isize) + (*bmp).w * scale;
-    *out
-        .offset(
-            3 as libc::c_int as isize,
-        ) = *out.offset(1 as libc::c_int as isize) + (*bmp).h * scale;
+    *out.offset(0 as libc::c_int as isize) = (windowW - (*bmp).w * scale) / 2 as libc::c_int;
+    *out.offset(1 as libc::c_int as isize) = (windowH - (*bmp).h * scale) / 2 as libc::c_int;
+    *out.offset(2 as libc::c_int as isize) =
+        *out.offset(0 as libc::c_int as isize) + (*bmp).w * scale;
+    *out.offset(3 as libc::c_int as isize) =
+        *out.offset(1 as libc::c_int as isize) + (*bmp).h * scale;
 }
 #[no_mangle]
 pub unsafe extern "C" fn tigrClear(mut bmp: *mut Tigr, mut color: TPixel) {
@@ -1582,7 +1515,7 @@ pub unsafe extern "C" fn tigrFill(
         if !(h != 0) {
             break;
         }
-    };
+    }
 }
 #[no_mangle]
 pub unsafe extern "C" fn tigrLine(
@@ -1626,7 +1559,7 @@ pub unsafe extern "C" fn tigrLine(
         if !(x0 != x1 || y0 != y1) {
             break;
         }
-    };
+    }
 }
 #[no_mangle]
 pub unsafe extern "C" fn tigrFillRect(
@@ -1670,35 +1603,33 @@ pub unsafe extern "C" fn tigrFillRect(
     if w <= 0 as libc::c_int || h <= 0 as libc::c_int {
         return;
     }
-    let mut td: *mut TPixel = &mut *((*bmp).pix).offset((y * (*bmp).w + x) as isize)
-        as *mut TPixel;
+    let mut td: *mut TPixel = &mut *((*bmp).pix).offset((y * (*bmp).w + x) as isize) as *mut TPixel;
     let mut dt: libc::c_int = (*bmp).w;
-    let mut xa: libc::c_int = color.a as libc::c_int
-        + (color.a as libc::c_int > 0 as libc::c_int) as libc::c_int;
+    let mut xa: libc::c_int =
+        color.a as libc::c_int + (color.a as libc::c_int > 0 as libc::c_int) as libc::c_int;
     let mut a: libc::c_int = xa * xa;
     loop {
         let mut i: libc::c_int = 0 as libc::c_int;
         while i < w {
             let ref mut fresh0 = (*td.offset(i as isize)).r;
             *fresh0 = (*fresh0 as libc::c_int
-                + ((color.r as libc::c_int - (*td.offset(i as isize)).r as libc::c_int)
-                    * a >> 16 as libc::c_int) as libc::c_uchar as libc::c_int)
+                + ((color.r as libc::c_int - (*td.offset(i as isize)).r as libc::c_int) * a
+                    >> 16 as libc::c_int) as libc::c_uchar as libc::c_int)
                 as libc::c_uchar;
             let ref mut fresh1 = (*td.offset(i as isize)).g;
             *fresh1 = (*fresh1 as libc::c_int
-                + ((color.g as libc::c_int - (*td.offset(i as isize)).g as libc::c_int)
-                    * a >> 16 as libc::c_int) as libc::c_uchar as libc::c_int)
+                + ((color.g as libc::c_int - (*td.offset(i as isize)).g as libc::c_int) * a
+                    >> 16 as libc::c_int) as libc::c_uchar as libc::c_int)
                 as libc::c_uchar;
             let ref mut fresh2 = (*td.offset(i as isize)).b;
             *fresh2 = (*fresh2 as libc::c_int
-                + ((color.b as libc::c_int - (*td.offset(i as isize)).b as libc::c_int)
-                    * a >> 16 as libc::c_int) as libc::c_uchar as libc::c_int)
+                + ((color.b as libc::c_int - (*td.offset(i as isize)).b as libc::c_int) * a
+                    >> 16 as libc::c_int) as libc::c_uchar as libc::c_int)
                 as libc::c_uchar;
             let ref mut fresh3 = (*td.offset(i as isize)).a;
             *fresh3 = (*fresh3 as libc::c_int
                 + (*bmp).blitMode
-                    * ((color.a as libc::c_int
-                        - (*td.offset(i as isize)).a as libc::c_int) * a
+                    * ((color.a as libc::c_int - (*td.offset(i as isize)).a as libc::c_int) * a
                         >> 16 as libc::c_int) as libc::c_uchar as libc::c_int)
                 as libc::c_uchar;
             i += 1;
@@ -1708,7 +1639,7 @@ pub unsafe extern "C" fn tigrFillRect(
         if !(h != 0) {
             break;
         }
-    };
+    }
 }
 #[no_mangle]
 pub unsafe extern "C" fn tigrRect(
@@ -1754,14 +1685,42 @@ pub unsafe extern "C" fn tigrFillCircle(
             y -= 1;
             dy += 2 as libc::c_int;
             E += dy;
-            tigrLine(bmp, x0 - x + 1 as libc::c_int, y0 + y, x0 + x, y0 + y, color);
-            tigrLine(bmp, x0 - x + 1 as libc::c_int, y0 - y, x0 + x, y0 - y, color);
+            tigrLine(
+                bmp,
+                x0 - x + 1 as libc::c_int,
+                y0 + y,
+                x0 + x,
+                y0 + y,
+                color,
+            );
+            tigrLine(
+                bmp,
+                x0 - x + 1 as libc::c_int,
+                y0 - y,
+                x0 + x,
+                y0 - y,
+                color,
+            );
         }
         dx += 2 as libc::c_int;
         E += dx + 1 as libc::c_int;
         if x != y {
-            tigrLine(bmp, x0 - y + 1 as libc::c_int, y0 + x, x0 + y, y0 + x, color);
-            tigrLine(bmp, x0 - y + 1 as libc::c_int, y0 - x, x0 + y, y0 - x, color);
+            tigrLine(
+                bmp,
+                x0 - y + 1 as libc::c_int,
+                y0 + x,
+                x0 + y,
+                y0 + x,
+                color,
+            );
+            tigrLine(
+                bmp,
+                x0 - y + 1 as libc::c_int,
+                y0 - x,
+                x0 + y,
+                y0 - x,
+                color,
+            );
         }
     }
 }
@@ -1846,30 +1805,28 @@ pub unsafe extern "C" fn tigrPlot(
         (*bmp).h
     };
     if x >= cx && y >= cy && x < cx + cw && y < cy + ch {
-        xa = pix.a as libc::c_int
-            + (pix.a as libc::c_int > 0 as libc::c_int) as libc::c_int;
+        xa = pix.a as libc::c_int + (pix.a as libc::c_int > 0 as libc::c_int) as libc::c_int;
         a = xa * xa;
         i = y * (*bmp).w + x;
         let ref mut fresh4 = (*((*bmp).pix).offset(i as isize)).r;
         *fresh4 = (*fresh4 as libc::c_int
-            + ((pix.r as libc::c_int
-                - (*((*bmp).pix).offset(i as isize)).r as libc::c_int) * a
-                >> 16 as libc::c_int) as libc::c_uchar as libc::c_int) as libc::c_uchar;
+            + ((pix.r as libc::c_int - (*((*bmp).pix).offset(i as isize)).r as libc::c_int) * a
+                >> 16 as libc::c_int) as libc::c_uchar as libc::c_int)
+            as libc::c_uchar;
         let ref mut fresh5 = (*((*bmp).pix).offset(i as isize)).g;
         *fresh5 = (*fresh5 as libc::c_int
-            + ((pix.g as libc::c_int
-                - (*((*bmp).pix).offset(i as isize)).g as libc::c_int) * a
-                >> 16 as libc::c_int) as libc::c_uchar as libc::c_int) as libc::c_uchar;
+            + ((pix.g as libc::c_int - (*((*bmp).pix).offset(i as isize)).g as libc::c_int) * a
+                >> 16 as libc::c_int) as libc::c_uchar as libc::c_int)
+            as libc::c_uchar;
         let ref mut fresh6 = (*((*bmp).pix).offset(i as isize)).b;
         *fresh6 = (*fresh6 as libc::c_int
-            + ((pix.b as libc::c_int
-                - (*((*bmp).pix).offset(i as isize)).b as libc::c_int) * a
-                >> 16 as libc::c_int) as libc::c_uchar as libc::c_int) as libc::c_uchar;
+            + ((pix.b as libc::c_int - (*((*bmp).pix).offset(i as isize)).b as libc::c_int) * a
+                >> 16 as libc::c_int) as libc::c_uchar as libc::c_int)
+            as libc::c_uchar;
         let ref mut fresh7 = (*((*bmp).pix).offset(i as isize)).a;
         *fresh7 = (*fresh7 as libc::c_int
             + (*bmp).blitMode
-                * ((pix.a as libc::c_int
-                    - (*((*bmp).pix).offset(i as isize)).a as libc::c_int) * a
+                * ((pix.a as libc::c_int - (*((*bmp).pix).offset(i as isize)).a as libc::c_int) * a
                     >> 16 as libc::c_int) as libc::c_uchar as libc::c_int)
             as libc::c_uchar;
     }
@@ -1947,18 +1904,17 @@ pub unsafe extern "C" fn tigrBlit(
     if w <= 0 as libc::c_int || h <= 0 as libc::c_int {
         return;
     }
-    let mut ts: *mut TPixel = &mut *((*src).pix).offset((sy * (*src).w + sx) as isize)
-        as *mut TPixel;
-    let mut td: *mut TPixel = &mut *((*dst).pix).offset((dy * (*dst).w + dx) as isize)
-        as *mut TPixel;
+    let mut ts: *mut TPixel =
+        &mut *((*src).pix).offset((sy * (*src).w + sx) as isize) as *mut TPixel;
+    let mut td: *mut TPixel =
+        &mut *((*dst).pix).offset((dy * (*dst).w + dx) as isize) as *mut TPixel;
     let mut st: libc::c_int = (*src).w;
     let mut dt: libc::c_int = (*dst).w;
     loop {
         memcpy(
             td as *mut libc::c_void,
             ts as *const libc::c_void,
-            (w as libc::c_ulong)
-                .wrapping_mul(::core::mem::size_of::<TPixel>() as libc::c_ulong),
+            (w as libc::c_ulong).wrapping_mul(::core::mem::size_of::<TPixel>() as libc::c_ulong),
         );
         ts = ts.offset(st as isize);
         td = td.offset(dt as isize);
@@ -1966,7 +1922,7 @@ pub unsafe extern "C" fn tigrBlit(
         if !(h != 0) {
             break;
         }
-    };
+    }
 }
 #[no_mangle]
 pub unsafe extern "C" fn tigrBlitTint(
@@ -2029,18 +1985,18 @@ pub unsafe extern "C" fn tigrBlitTint(
     if w <= 0 as libc::c_int || h <= 0 as libc::c_int {
         return;
     }
-    let mut xr: libc::c_int = tint.r as libc::c_int
-        + (tint.r as libc::c_int > 0 as libc::c_int) as libc::c_int;
-    let mut xg: libc::c_int = tint.g as libc::c_int
-        + (tint.g as libc::c_int > 0 as libc::c_int) as libc::c_int;
-    let mut xb: libc::c_int = tint.b as libc::c_int
-        + (tint.b as libc::c_int > 0 as libc::c_int) as libc::c_int;
-    let mut xa: libc::c_int = tint.a as libc::c_int
-        + (tint.a as libc::c_int > 0 as libc::c_int) as libc::c_int;
-    let mut ts: *mut TPixel = &mut *((*src).pix).offset((sy * (*src).w + sx) as isize)
-        as *mut TPixel;
-    let mut td: *mut TPixel = &mut *((*dst).pix).offset((dy * (*dst).w + dx) as isize)
-        as *mut TPixel;
+    let mut xr: libc::c_int =
+        tint.r as libc::c_int + (tint.r as libc::c_int > 0 as libc::c_int) as libc::c_int;
+    let mut xg: libc::c_int =
+        tint.g as libc::c_int + (tint.g as libc::c_int > 0 as libc::c_int) as libc::c_int;
+    let mut xb: libc::c_int =
+        tint.b as libc::c_int + (tint.b as libc::c_int > 0 as libc::c_int) as libc::c_int;
+    let mut xa: libc::c_int =
+        tint.a as libc::c_int + (tint.a as libc::c_int > 0 as libc::c_int) as libc::c_int;
+    let mut ts: *mut TPixel =
+        &mut *((*src).pix).offset((sy * (*src).w + sx) as isize) as *mut TPixel;
+    let mut td: *mut TPixel =
+        &mut *((*dst).pix).offset((dy * (*dst).w + dx) as isize) as *mut TPixel;
     let mut st: libc::c_int = (*src).w;
     let mut dt: libc::c_int = (*dst).w;
     loop {
@@ -2058,29 +2014,31 @@ pub unsafe extern "C" fn tigrBlitTint(
                         as libc::c_int)) as libc::c_uint;
             let ref mut fresh8 = (*td.offset(x as isize)).r;
             *fresh8 = (*fresh8 as libc::c_int
-                + (r
-                    .wrapping_sub((*td.offset(x as isize)).r as libc::c_uint)
-                    .wrapping_mul(a) >> 16 as libc::c_int) as libc::c_uchar
-                    as libc::c_int) as libc::c_uchar;
+                + (r.wrapping_sub((*td.offset(x as isize)).r as libc::c_uint)
+                    .wrapping_mul(a)
+                    >> 16 as libc::c_int) as libc::c_uchar as libc::c_int)
+                as libc::c_uchar;
             let ref mut fresh9 = (*td.offset(x as isize)).g;
             *fresh9 = (*fresh9 as libc::c_int
-                + (g
-                    .wrapping_sub((*td.offset(x as isize)).g as libc::c_uint)
-                    .wrapping_mul(a) >> 16 as libc::c_int) as libc::c_uchar
-                    as libc::c_int) as libc::c_uchar;
+                + (g.wrapping_sub((*td.offset(x as isize)).g as libc::c_uint)
+                    .wrapping_mul(a)
+                    >> 16 as libc::c_int) as libc::c_uchar as libc::c_int)
+                as libc::c_uchar;
             let ref mut fresh10 = (*td.offset(x as isize)).b;
             *fresh10 = (*fresh10 as libc::c_int
-                + (b
-                    .wrapping_sub((*td.offset(x as isize)).b as libc::c_uint)
-                    .wrapping_mul(a) >> 16 as libc::c_int) as libc::c_uchar
-                    as libc::c_int) as libc::c_uchar;
+                + (b.wrapping_sub((*td.offset(x as isize)).b as libc::c_uint)
+                    .wrapping_mul(a)
+                    >> 16 as libc::c_int) as libc::c_uchar as libc::c_int)
+                as libc::c_uchar;
             let ref mut fresh11 = (*td.offset(x as isize)).a;
             *fresh11 = (*fresh11 as libc::c_int
                 + (*dst).blitMode
                     * ((((*ts.offset(x as isize)).a as libc::c_int
-                        - (*td.offset(x as isize)).a as libc::c_int) as libc::c_uint)
-                        .wrapping_mul(a) >> 16 as libc::c_int) as libc::c_uchar
-                        as libc::c_int) as libc::c_uchar;
+                        - (*td.offset(x as isize)).a as libc::c_int)
+                        as libc::c_uint)
+                        .wrapping_mul(a)
+                        >> 16 as libc::c_int) as libc::c_uchar as libc::c_int)
+                as libc::c_uchar;
             x += 1;
         }
         ts = ts.offset(st as isize);
@@ -2089,7 +2047,7 @@ pub unsafe extern "C" fn tigrBlitTint(
         if !(h != 0) {
             break;
         }
-    };
+    }
 }
 #[no_mangle]
 pub unsafe extern "C" fn tigrBlitAlpha(
@@ -2146,14 +2104,14 @@ unsafe extern "C" fn find(
     while (*png).p < (*png).end {
         let mut len: libc::c_uint = get32(((*png).p).offset(0 as libc::c_int as isize));
         start = (*png).p;
-        (*png)
-            .p = ((*png).p)
-            .offset(len.wrapping_add(12 as libc::c_int as libc::c_uint) as isize);
+        (*png).p = ((*png).p).offset(len.wrapping_add(12 as libc::c_int as libc::c_uint) as isize);
         if memcmp(
             start.offset(4 as libc::c_int as isize) as *const libc::c_void,
             chunk as *const libc::c_void,
             4 as libc::c_int as libc::c_ulong,
-        ) == 0 as libc::c_int && len >= minlen && (*png).p <= (*png).end
+        ) == 0 as libc::c_int
+            && len >= minlen
+            && (*png).p <= (*png).end
         {
             return start.offset(8 as libc::c_int as isize);
         }
@@ -2196,8 +2154,8 @@ unsafe extern "C" fn unfilter(
     let mut bpp: libc::c_int = rowBytes(1 as libc::c_int, bipp);
     let mut x: libc::c_int = 0;
     let mut y: libc::c_int = 0;
-    let mut first: *mut libc::c_uchar = malloc((len + 1 as libc::c_int) as libc::c_ulong)
-        as *mut libc::c_uchar;
+    let mut first: *mut libc::c_uchar =
+        malloc((len + 1 as libc::c_int) as libc::c_ulong) as *mut libc::c_uchar;
     memset(
         first as *mut libc::c_void,
         0 as libc::c_int,
@@ -2214,8 +2172,7 @@ unsafe extern "C" fn unfilter(
                 x = 0 as libc::c_int;
                 while x < bpp {
                     let ref mut fresh13 = *raw.offset(x as isize);
-                    *fresh13 = (*fresh13 as libc::c_int + 0 as libc::c_int)
-                        as libc::c_uchar;
+                    *fresh13 = (*fresh13 as libc::c_int + 0 as libc::c_int) as libc::c_uchar;
                     x += 1;
                 }
                 while x < len {
@@ -2230,14 +2187,14 @@ unsafe extern "C" fn unfilter(
                 x = 0 as libc::c_int;
                 while x < bpp {
                     let ref mut fresh15 = *raw.offset(x as isize);
-                    *fresh15 = (*fresh15 as libc::c_int
-                        + *prev.offset(x as isize) as libc::c_int) as libc::c_uchar;
+                    *fresh15 = (*fresh15 as libc::c_int + *prev.offset(x as isize) as libc::c_int)
+                        as libc::c_uchar;
                     x += 1;
                 }
                 while x < len {
                     let ref mut fresh16 = *raw.offset(x as isize);
-                    *fresh16 = (*fresh16 as libc::c_int
-                        + *prev.offset(x as isize) as libc::c_int) as libc::c_uchar;
+                    *fresh16 = (*fresh16 as libc::c_int + *prev.offset(x as isize) as libc::c_int)
+                        as libc::c_uchar;
                     x += 1;
                 }
             }
@@ -2263,8 +2220,8 @@ unsafe extern "C" fn unfilter(
                 x = 0 as libc::c_int;
                 while x < bpp {
                     let ref mut fresh19 = *raw.offset(x as isize);
-                    *fresh19 = (*fresh19 as libc::c_int
-                        + *prev.offset(x as isize) as libc::c_int) as libc::c_uchar;
+                    *fresh19 = (*fresh19 as libc::c_int + *prev.offset(x as isize) as libc::c_int)
+                        as libc::c_uchar;
                     x += 1;
                 }
                 while x < len {
@@ -2406,8 +2363,8 @@ unsafe extern "C" fn depalette(
                 c = *fresh27 as libc::c_int;
             } else {
                 let mut pos: libc::c_int = x & len;
-                c = *src.offset(0 as libc::c_int as isize) as libc::c_int
-                    >> (len - pos) * bipp & mask;
+                c = *src.offset(0 as libc::c_int as isize) as libc::c_int >> (len - pos) * bipp
+                    & mask;
                 if pos == len {
                     src = src.offset(1);
                 }
@@ -2449,8 +2406,7 @@ unsafe extern "C" fn tigrLoadPng(mut png: *mut PNG) -> *mut Tigr {
     let mut bmp: *mut Tigr = 0 as *mut Tigr;
     if !(memcmp(
         (*png).p as *const libc::c_void,
-        b"\x89PNG\r\n\x1A\n\0" as *const u8 as *const libc::c_char
-            as *const libc::c_void,
+        b"\x89PNG\r\n\x1A\n\0" as *const u8 as *const libc::c_char as *const libc::c_void,
         8 as libc::c_int as libc::c_ulong,
     ) == 0 as libc::c_int)
     {
@@ -2523,9 +2479,8 @@ unsafe extern "C" fn tigrLoadPng(mut png: *mut PNG) -> *mut Tigr {
                                 0 as libc::c_int as libc::c_uint,
                             );
                             while !idat.is_null() {
-                                let mut len: libc::c_uint = get32(
-                                    idat.offset(-(8 as libc::c_int as isize)),
-                                );
+                                let mut len: libc::c_uint =
+                                    get32(idat.offset(-(8 as libc::c_int as isize)));
                                 data = realloc(
                                     data as *mut libc::c_void,
                                     (datalen as libc::c_uint).wrapping_add(len) as libc::c_ulong,
@@ -2538,8 +2493,8 @@ unsafe extern "C" fn tigrLoadPng(mut png: *mut PNG) -> *mut Tigr {
                                     idat as *const libc::c_void,
                                     len as libc::c_ulong,
                                 );
-                                datalen = (datalen as libc::c_uint).wrapping_add(len)
-                                    as libc::c_int as libc::c_int;
+                                datalen = (datalen as libc::c_uint).wrapping_add(len) as libc::c_int
+                                    as libc::c_int;
                                 idat = find(
                                     png,
                                     b"IDAT\0" as *const u8 as *const libc::c_char,
@@ -2559,18 +2514,21 @@ unsafe extern "C" fn tigrLoadPng(mut png: *mut PNG) -> *mut Tigr {
                                 0 as libc::c_int as libc::c_uint,
                             );
                             if !trns.is_null() {
-                                trnsSize = get32(trns.offset(-(8 as libc::c_int as isize)))
-                                    as libc::c_int;
+                                trnsSize =
+                                    get32(trns.offset(-(8 as libc::c_int as isize))) as libc::c_int;
                             }
                             if !(!data.is_null() && datalen >= 6 as libc::c_int) {
                                 *__errno_location() = 22 as libc::c_int;
-                            } else if !(*data.offset(0 as libc::c_int as isize)
-                                    as libc::c_int & 0xf as libc::c_int == 0x8 as libc::c_int
-                                    && *data.offset(0 as libc::c_int as isize) as libc::c_int
-                                        & 0xf0 as libc::c_int <= 0x70 as libc::c_int
-                                    && *data.offset(1 as libc::c_int as isize) as libc::c_int
-                                        & 0x20 as libc::c_int == 0 as libc::c_int)
-                                {
+                            } else if !(*data.offset(0 as libc::c_int as isize) as libc::c_int
+                                & 0xf as libc::c_int
+                                == 0x8 as libc::c_int
+                                && *data.offset(0 as libc::c_int as isize) as libc::c_int
+                                    & 0xf0 as libc::c_int
+                                    <= 0x70 as libc::c_int
+                                && *data.offset(1 as libc::c_int as isize) as libc::c_int
+                                    & 0x20 as libc::c_int
+                                    == 0 as libc::c_int)
+                            {
                                 *__errno_location() = 22 as libc::c_int;
                             } else {
                                 out = ((*bmp).pix as *mut libc::c_uchar)
@@ -2579,8 +2537,7 @@ unsafe extern "C" fn tigrLoadPng(mut png: *mut PNG) -> *mut Tigr {
                                 if tigrInflate(
                                     out as *mut libc::c_void,
                                     outsize(bmp, bipp) as libc::c_uint,
-                                    data.offset(2 as libc::c_int as isize)
-                                        as *const libc::c_void,
+                                    data.offset(2 as libc::c_int as isize) as *const libc::c_void,
                                     (datalen - 6 as libc::c_int) as libc::c_uint,
                                 ) == 0
                                 {
@@ -2688,27 +2645,37 @@ static mut crctable: [libc::c_uint; 16] = [
 ];
 unsafe extern "C" fn put(mut s: *mut Save, mut v: libc::c_uint) {
     fputc(v as libc::c_int, (*s).out);
-    (*s)
-        .crc = (*s).crc >> 4 as libc::c_int
+    (*s).crc = (*s).crc >> 4 as libc::c_int
         ^ crctable[((*s).crc & 15 as libc::c_int as libc::c_uint
             ^ v & 15 as libc::c_int as libc::c_uint) as usize];
-    (*s)
-        .crc = (*s).crc >> 4 as libc::c_int
-        ^ crctable[((*s).crc & 15 as libc::c_int as libc::c_uint ^ v >> 4 as libc::c_int)
-            as usize];
+    (*s).crc = (*s).crc >> 4 as libc::c_int
+        ^ crctable[((*s).crc & 15 as libc::c_int as libc::c_uint ^ v >> 4 as libc::c_int) as usize];
 }
 unsafe extern "C" fn updateAdler(mut s: *mut Save, mut v: libc::c_uint) {
     let mut s1: libc::c_uint = (*s).adler & 0xffff as libc::c_int as libc::c_uint;
-    let mut s2: libc::c_uint = (*s).adler >> 16 as libc::c_int
-        & 0xffff as libc::c_int as libc::c_uint;
-    s1 = s1.wrapping_add(v).wrapping_rem(65521 as libc::c_int as libc::c_uint);
-    s2 = s2.wrapping_add(s1).wrapping_rem(65521 as libc::c_int as libc::c_uint);
+    let mut s2: libc::c_uint =
+        (*s).adler >> 16 as libc::c_int & 0xffff as libc::c_int as libc::c_uint;
+    s1 = s1
+        .wrapping_add(v)
+        .wrapping_rem(65521 as libc::c_int as libc::c_uint);
+    s2 = s2
+        .wrapping_add(s1)
+        .wrapping_rem(65521 as libc::c_int as libc::c_uint);
     (*s).adler = (s2 << 16 as libc::c_int).wrapping_add(s1);
 }
 unsafe extern "C" fn put32(mut s: *mut Save, mut v: libc::c_uint) {
-    put(s, v >> 24 as libc::c_int & 0xff as libc::c_int as libc::c_uint);
-    put(s, v >> 16 as libc::c_int & 0xff as libc::c_int as libc::c_uint);
-    put(s, v >> 8 as libc::c_int & 0xff as libc::c_int as libc::c_uint);
+    put(
+        s,
+        v >> 24 as libc::c_int & 0xff as libc::c_int as libc::c_uint,
+    );
+    put(
+        s,
+        v >> 16 as libc::c_int & 0xff as libc::c_int as libc::c_uint,
+    );
+    put(
+        s,
+        v >> 8 as libc::c_int & 0xff as libc::c_int as libc::c_uint,
+    );
     put(s, v & 0xff as libc::c_int as libc::c_uint);
 }
 #[no_mangle]
@@ -2724,15 +2691,14 @@ pub unsafe extern "C" fn putbits(
             break;
         }
         let mut prev: libc::c_uint = (*s).bits;
-        (*s)
-            .bits = (*s).bits >> 1 as libc::c_int
+        (*s).bits = (*s).bits >> 1 as libc::c_int
             | (data & 1 as libc::c_int as libc::c_uint) << 7 as libc::c_int;
         data >>= 1 as libc::c_int;
         if prev & 1 as libc::c_int as libc::c_uint != 0 {
             put(s, (*s).bits);
             (*s).bits = 0x80 as libc::c_int as libc::c_uint;
         }
-    };
+    }
 }
 #[no_mangle]
 pub unsafe extern "C" fn putbitsr(
@@ -2747,13 +2713,9 @@ pub unsafe extern "C" fn putbitsr(
             break;
         }
         putbits(s, data >> bitcount, 1 as libc::c_int as libc::c_uint);
-    };
+    }
 }
-unsafe extern "C" fn begin(
-    mut s: *mut Save,
-    mut id: *const libc::c_char,
-    mut len: libc::c_uint,
-) {
+unsafe extern "C" fn begin(mut s: *mut Save, mut id: *const libc::c_char, mut len: libc::c_uint) {
     put32(s, len);
     (*s).crc = 0xffffffff as libc::c_uint;
     put(s, *id.offset(0 as libc::c_int as isize) as libc::c_uint);
@@ -2804,7 +2766,11 @@ unsafe extern "C" fn encodelen(
 ) {
     literal(s, code.wrapping_add(len >> bits_0));
     putbits(s, len, bits_0);
-    putbits(s, 0 as libc::c_int as libc::c_uint, 5 as libc::c_int as libc::c_uint);
+    putbits(
+        s,
+        0 as libc::c_int as libc::c_uint,
+        5 as libc::c_int as libc::c_uint,
+    );
 }
 unsafe extern "C" fn endrun(mut s: *mut Save) {
     (*s).runlen = ((*s).runlen).wrapping_sub(1);
@@ -2857,8 +2823,7 @@ unsafe extern "C" fn endrun(mut s: *mut Save) {
 }
 unsafe extern "C" fn encodeByte(mut s: *mut Save, mut v: libc::c_uchar) {
     updateAdler(s, v as libc::c_uint);
-    if (*s).prev == v as libc::c_uint && (*s).runlen < 115 as libc::c_int as libc::c_uint
-    {
+    if (*s).prev == v as libc::c_uint && (*s).runlen < 115 as libc::c_int as libc::c_uint {
         (*s).runlen = ((*s).runlen).wrapping_add(1);
     } else {
         if (*s).runlen != 0 {
@@ -2870,8 +2835,7 @@ unsafe extern "C" fn encodeByte(mut s: *mut Save, mut v: libc::c_uchar) {
 }
 unsafe extern "C" fn savePngHeader(mut s: *mut Save, mut bmp: *mut Tigr) {
     fwrite(
-        b"\x89PNG\r\n\x1A\n\0" as *const u8 as *const libc::c_char
-            as *const libc::c_void,
+        b"\x89PNG\r\n\x1A\n\0" as *const u8 as *const libc::c_char as *const libc::c_void,
         8 as libc::c_int as libc::c_ulong,
         1 as libc::c_int as libc::c_ulong,
         (*s).out,
@@ -2905,11 +2869,15 @@ unsafe extern "C" fn savePngData(
     );
     put(s, 0x8 as libc::c_int as libc::c_uint);
     put(s, 0x1d as libc::c_int as libc::c_uint);
-    putbits(s, 3 as libc::c_int as libc::c_uint, 3 as libc::c_int as libc::c_uint);
+    putbits(
+        s,
+        3 as libc::c_int as libc::c_uint,
+        3 as libc::c_int as libc::c_uint,
+    );
     y = 0 as libc::c_int;
     while y < (*bmp).h {
-        let mut row: *mut TPixel = &mut *((*bmp).pix).offset((y * (*bmp).w) as isize)
-            as *mut TPixel;
+        let mut row: *mut TPixel =
+            &mut *((*bmp).pix).offset((y * (*bmp).w) as isize) as *mut TPixel;
         let mut prev: TPixel = tigrRGBA(
             0 as libc::c_int as libc::c_uchar,
             0 as libc::c_int as libc::c_uchar,
@@ -2947,7 +2915,11 @@ unsafe extern "C" fn savePngData(
     endrun(s);
     literal(s, 256 as libc::c_int as libc::c_uint);
     while (*s).bits != 0x80 as libc::c_int as libc::c_uint {
-        putbits(s, 0 as libc::c_int as libc::c_uint, 1 as libc::c_int as libc::c_uint);
+        putbits(
+            s,
+            0 as libc::c_int as libc::c_uint,
+            1 as libc::c_int as libc::c_uint,
+        );
     }
     put32(s, (*s).adler);
     dataSize = ftell((*s).out) - dataPos - 8 as libc::c_int as libc::c_long;
@@ -2971,10 +2943,7 @@ pub unsafe extern "C" fn tigrSaveImage(
     let mut dataPos: libc::c_long = 0;
     let mut dataSize: libc::c_long = 0;
     let mut err: libc::c_long = 0;
-    let mut out: *mut FILE = fopen(
-        fileName,
-        b"wb\0" as *const u8 as *const libc::c_char,
-    );
+    let mut out: *mut FILE = fopen(fileName, b"wb\0" as *const u8 as *const libc::c_char);
     if out.is_null() {
         return 1 as libc::c_int;
     }
@@ -3175,51 +3144,33 @@ static mut reverseTable: [libc::c_uchar; 256] = [
     (0 as libc::c_int + 8 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
     (0 as libc::c_int + 8 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (0 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int) as libc::c_uchar,
-    (0 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int + 128 as libc::c_int)
-        as libc::c_uchar,
-    (0 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
-    (0 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int + 192 as libc::c_int)
-        as libc::c_uchar,
+    (0 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
+    (0 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
+    (0 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (0 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int) as libc::c_uchar,
-    (0 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int + 128 as libc::c_int)
-        as libc::c_uchar,
-    (0 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
-    (0 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int + 192 as libc::c_int)
-        as libc::c_uchar,
+    (0 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
+    (0 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
+    (0 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (0 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int) as libc::c_uchar,
-    (0 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int + 128 as libc::c_int)
-        as libc::c_uchar,
-    (0 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
-    (0 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int + 192 as libc::c_int)
-        as libc::c_uchar,
+    (0 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
+    (0 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
+    (0 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (0 as libc::c_int + 4 as libc::c_int) as libc::c_uchar,
     (0 as libc::c_int + 4 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
     (0 as libc::c_int + 4 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
     (0 as libc::c_int + 4 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (0 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int) as libc::c_uchar,
-    (0 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int + 128 as libc::c_int)
-        as libc::c_uchar,
-    (0 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
-    (0 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int + 192 as libc::c_int)
-        as libc::c_uchar,
+    (0 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
+    (0 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
+    (0 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (0 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int) as libc::c_uchar,
-    (0 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int + 128 as libc::c_int)
-        as libc::c_uchar,
-    (0 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
-    (0 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int + 192 as libc::c_int)
-        as libc::c_uchar,
+    (0 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
+    (0 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
+    (0 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (0 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int) as libc::c_uchar,
-    (0 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int + 128 as libc::c_int)
-        as libc::c_uchar,
-    (0 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
-    (0 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int + 192 as libc::c_int)
-        as libc::c_uchar,
+    (0 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
+    (0 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
+    (0 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (0 as libc::c_int + 12 as libc::c_int) as libc::c_uchar,
     (0 as libc::c_int + 12 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
     (0 as libc::c_int + 12 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
@@ -3227,22 +3178,19 @@ static mut reverseTable: [libc::c_uchar; 256] = [
     (0 as libc::c_int + 12 as libc::c_int + 32 as libc::c_int) as libc::c_uchar,
     (0 as libc::c_int + 12 as libc::c_int + 32 as libc::c_int + 128 as libc::c_int)
         as libc::c_uchar,
-    (0 as libc::c_int + 12 as libc::c_int + 32 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
+    (0 as libc::c_int + 12 as libc::c_int + 32 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
     (0 as libc::c_int + 12 as libc::c_int + 32 as libc::c_int + 192 as libc::c_int)
         as libc::c_uchar,
     (0 as libc::c_int + 12 as libc::c_int + 16 as libc::c_int) as libc::c_uchar,
     (0 as libc::c_int + 12 as libc::c_int + 16 as libc::c_int + 128 as libc::c_int)
         as libc::c_uchar,
-    (0 as libc::c_int + 12 as libc::c_int + 16 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
+    (0 as libc::c_int + 12 as libc::c_int + 16 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
     (0 as libc::c_int + 12 as libc::c_int + 16 as libc::c_int + 192 as libc::c_int)
         as libc::c_uchar,
     (0 as libc::c_int + 12 as libc::c_int + 48 as libc::c_int) as libc::c_uchar,
     (0 as libc::c_int + 12 as libc::c_int + 48 as libc::c_int + 128 as libc::c_int)
         as libc::c_uchar,
-    (0 as libc::c_int + 12 as libc::c_int + 48 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
+    (0 as libc::c_int + 12 as libc::c_int + 48 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
     (0 as libc::c_int + 12 as libc::c_int + 48 as libc::c_int + 192 as libc::c_int)
         as libc::c_uchar,
     2 as libc::c_int as libc::c_uchar,
@@ -3266,51 +3214,33 @@ static mut reverseTable: [libc::c_uchar; 256] = [
     (2 as libc::c_int + 8 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
     (2 as libc::c_int + 8 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (2 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int) as libc::c_uchar,
-    (2 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int + 128 as libc::c_int)
-        as libc::c_uchar,
-    (2 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
-    (2 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int + 192 as libc::c_int)
-        as libc::c_uchar,
+    (2 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
+    (2 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
+    (2 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (2 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int) as libc::c_uchar,
-    (2 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int + 128 as libc::c_int)
-        as libc::c_uchar,
-    (2 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
-    (2 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int + 192 as libc::c_int)
-        as libc::c_uchar,
+    (2 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
+    (2 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
+    (2 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (2 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int) as libc::c_uchar,
-    (2 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int + 128 as libc::c_int)
-        as libc::c_uchar,
-    (2 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
-    (2 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int + 192 as libc::c_int)
-        as libc::c_uchar,
+    (2 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
+    (2 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
+    (2 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (2 as libc::c_int + 4 as libc::c_int) as libc::c_uchar,
     (2 as libc::c_int + 4 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
     (2 as libc::c_int + 4 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
     (2 as libc::c_int + 4 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (2 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int) as libc::c_uchar,
-    (2 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int + 128 as libc::c_int)
-        as libc::c_uchar,
-    (2 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
-    (2 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int + 192 as libc::c_int)
-        as libc::c_uchar,
+    (2 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
+    (2 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
+    (2 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (2 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int) as libc::c_uchar,
-    (2 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int + 128 as libc::c_int)
-        as libc::c_uchar,
-    (2 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
-    (2 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int + 192 as libc::c_int)
-        as libc::c_uchar,
+    (2 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
+    (2 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
+    (2 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (2 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int) as libc::c_uchar,
-    (2 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int + 128 as libc::c_int)
-        as libc::c_uchar,
-    (2 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
-    (2 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int + 192 as libc::c_int)
-        as libc::c_uchar,
+    (2 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
+    (2 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
+    (2 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (2 as libc::c_int + 12 as libc::c_int) as libc::c_uchar,
     (2 as libc::c_int + 12 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
     (2 as libc::c_int + 12 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
@@ -3318,22 +3248,19 @@ static mut reverseTable: [libc::c_uchar; 256] = [
     (2 as libc::c_int + 12 as libc::c_int + 32 as libc::c_int) as libc::c_uchar,
     (2 as libc::c_int + 12 as libc::c_int + 32 as libc::c_int + 128 as libc::c_int)
         as libc::c_uchar,
-    (2 as libc::c_int + 12 as libc::c_int + 32 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
+    (2 as libc::c_int + 12 as libc::c_int + 32 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
     (2 as libc::c_int + 12 as libc::c_int + 32 as libc::c_int + 192 as libc::c_int)
         as libc::c_uchar,
     (2 as libc::c_int + 12 as libc::c_int + 16 as libc::c_int) as libc::c_uchar,
     (2 as libc::c_int + 12 as libc::c_int + 16 as libc::c_int + 128 as libc::c_int)
         as libc::c_uchar,
-    (2 as libc::c_int + 12 as libc::c_int + 16 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
+    (2 as libc::c_int + 12 as libc::c_int + 16 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
     (2 as libc::c_int + 12 as libc::c_int + 16 as libc::c_int + 192 as libc::c_int)
         as libc::c_uchar,
     (2 as libc::c_int + 12 as libc::c_int + 48 as libc::c_int) as libc::c_uchar,
     (2 as libc::c_int + 12 as libc::c_int + 48 as libc::c_int + 128 as libc::c_int)
         as libc::c_uchar,
-    (2 as libc::c_int + 12 as libc::c_int + 48 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
+    (2 as libc::c_int + 12 as libc::c_int + 48 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
     (2 as libc::c_int + 12 as libc::c_int + 48 as libc::c_int + 192 as libc::c_int)
         as libc::c_uchar,
     1 as libc::c_int as libc::c_uchar,
@@ -3357,51 +3284,33 @@ static mut reverseTable: [libc::c_uchar; 256] = [
     (1 as libc::c_int + 8 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
     (1 as libc::c_int + 8 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (1 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int) as libc::c_uchar,
-    (1 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int + 128 as libc::c_int)
-        as libc::c_uchar,
-    (1 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
-    (1 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int + 192 as libc::c_int)
-        as libc::c_uchar,
+    (1 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
+    (1 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
+    (1 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (1 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int) as libc::c_uchar,
-    (1 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int + 128 as libc::c_int)
-        as libc::c_uchar,
-    (1 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
-    (1 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int + 192 as libc::c_int)
-        as libc::c_uchar,
+    (1 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
+    (1 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
+    (1 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (1 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int) as libc::c_uchar,
-    (1 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int + 128 as libc::c_int)
-        as libc::c_uchar,
-    (1 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
-    (1 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int + 192 as libc::c_int)
-        as libc::c_uchar,
+    (1 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
+    (1 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
+    (1 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (1 as libc::c_int + 4 as libc::c_int) as libc::c_uchar,
     (1 as libc::c_int + 4 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
     (1 as libc::c_int + 4 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
     (1 as libc::c_int + 4 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (1 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int) as libc::c_uchar,
-    (1 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int + 128 as libc::c_int)
-        as libc::c_uchar,
-    (1 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
-    (1 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int + 192 as libc::c_int)
-        as libc::c_uchar,
+    (1 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
+    (1 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
+    (1 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (1 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int) as libc::c_uchar,
-    (1 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int + 128 as libc::c_int)
-        as libc::c_uchar,
-    (1 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
-    (1 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int + 192 as libc::c_int)
-        as libc::c_uchar,
+    (1 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
+    (1 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
+    (1 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (1 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int) as libc::c_uchar,
-    (1 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int + 128 as libc::c_int)
-        as libc::c_uchar,
-    (1 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
-    (1 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int + 192 as libc::c_int)
-        as libc::c_uchar,
+    (1 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
+    (1 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
+    (1 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (1 as libc::c_int + 12 as libc::c_int) as libc::c_uchar,
     (1 as libc::c_int + 12 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
     (1 as libc::c_int + 12 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
@@ -3409,22 +3318,19 @@ static mut reverseTable: [libc::c_uchar; 256] = [
     (1 as libc::c_int + 12 as libc::c_int + 32 as libc::c_int) as libc::c_uchar,
     (1 as libc::c_int + 12 as libc::c_int + 32 as libc::c_int + 128 as libc::c_int)
         as libc::c_uchar,
-    (1 as libc::c_int + 12 as libc::c_int + 32 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
+    (1 as libc::c_int + 12 as libc::c_int + 32 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
     (1 as libc::c_int + 12 as libc::c_int + 32 as libc::c_int + 192 as libc::c_int)
         as libc::c_uchar,
     (1 as libc::c_int + 12 as libc::c_int + 16 as libc::c_int) as libc::c_uchar,
     (1 as libc::c_int + 12 as libc::c_int + 16 as libc::c_int + 128 as libc::c_int)
         as libc::c_uchar,
-    (1 as libc::c_int + 12 as libc::c_int + 16 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
+    (1 as libc::c_int + 12 as libc::c_int + 16 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
     (1 as libc::c_int + 12 as libc::c_int + 16 as libc::c_int + 192 as libc::c_int)
         as libc::c_uchar,
     (1 as libc::c_int + 12 as libc::c_int + 48 as libc::c_int) as libc::c_uchar,
     (1 as libc::c_int + 12 as libc::c_int + 48 as libc::c_int + 128 as libc::c_int)
         as libc::c_uchar,
-    (1 as libc::c_int + 12 as libc::c_int + 48 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
+    (1 as libc::c_int + 12 as libc::c_int + 48 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
     (1 as libc::c_int + 12 as libc::c_int + 48 as libc::c_int + 192 as libc::c_int)
         as libc::c_uchar,
     3 as libc::c_int as libc::c_uchar,
@@ -3448,51 +3354,33 @@ static mut reverseTable: [libc::c_uchar; 256] = [
     (3 as libc::c_int + 8 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
     (3 as libc::c_int + 8 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (3 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int) as libc::c_uchar,
-    (3 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int + 128 as libc::c_int)
-        as libc::c_uchar,
-    (3 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
-    (3 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int + 192 as libc::c_int)
-        as libc::c_uchar,
+    (3 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
+    (3 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
+    (3 as libc::c_int + 8 as libc::c_int + 32 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (3 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int) as libc::c_uchar,
-    (3 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int + 128 as libc::c_int)
-        as libc::c_uchar,
-    (3 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
-    (3 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int + 192 as libc::c_int)
-        as libc::c_uchar,
+    (3 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
+    (3 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
+    (3 as libc::c_int + 8 as libc::c_int + 16 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (3 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int) as libc::c_uchar,
-    (3 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int + 128 as libc::c_int)
-        as libc::c_uchar,
-    (3 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
-    (3 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int + 192 as libc::c_int)
-        as libc::c_uchar,
+    (3 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
+    (3 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
+    (3 as libc::c_int + 8 as libc::c_int + 48 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (3 as libc::c_int + 4 as libc::c_int) as libc::c_uchar,
     (3 as libc::c_int + 4 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
     (3 as libc::c_int + 4 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
     (3 as libc::c_int + 4 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (3 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int) as libc::c_uchar,
-    (3 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int + 128 as libc::c_int)
-        as libc::c_uchar,
-    (3 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
-    (3 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int + 192 as libc::c_int)
-        as libc::c_uchar,
+    (3 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
+    (3 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
+    (3 as libc::c_int + 4 as libc::c_int + 32 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (3 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int) as libc::c_uchar,
-    (3 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int + 128 as libc::c_int)
-        as libc::c_uchar,
-    (3 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
-    (3 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int + 192 as libc::c_int)
-        as libc::c_uchar,
+    (3 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
+    (3 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
+    (3 as libc::c_int + 4 as libc::c_int + 16 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (3 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int) as libc::c_uchar,
-    (3 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int + 128 as libc::c_int)
-        as libc::c_uchar,
-    (3 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
-    (3 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int + 192 as libc::c_int)
-        as libc::c_uchar,
+    (3 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
+    (3 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
+    (3 as libc::c_int + 4 as libc::c_int + 48 as libc::c_int + 192 as libc::c_int) as libc::c_uchar,
     (3 as libc::c_int + 12 as libc::c_int) as libc::c_uchar,
     (3 as libc::c_int + 12 as libc::c_int + 128 as libc::c_int) as libc::c_uchar,
     (3 as libc::c_int + 12 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
@@ -3500,34 +3388,31 @@ static mut reverseTable: [libc::c_uchar; 256] = [
     (3 as libc::c_int + 12 as libc::c_int + 32 as libc::c_int) as libc::c_uchar,
     (3 as libc::c_int + 12 as libc::c_int + 32 as libc::c_int + 128 as libc::c_int)
         as libc::c_uchar,
-    (3 as libc::c_int + 12 as libc::c_int + 32 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
+    (3 as libc::c_int + 12 as libc::c_int + 32 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
     (3 as libc::c_int + 12 as libc::c_int + 32 as libc::c_int + 192 as libc::c_int)
         as libc::c_uchar,
     (3 as libc::c_int + 12 as libc::c_int + 16 as libc::c_int) as libc::c_uchar,
     (3 as libc::c_int + 12 as libc::c_int + 16 as libc::c_int + 128 as libc::c_int)
         as libc::c_uchar,
-    (3 as libc::c_int + 12 as libc::c_int + 16 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
+    (3 as libc::c_int + 12 as libc::c_int + 16 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
     (3 as libc::c_int + 12 as libc::c_int + 16 as libc::c_int + 192 as libc::c_int)
         as libc::c_uchar,
     (3 as libc::c_int + 12 as libc::c_int + 48 as libc::c_int) as libc::c_uchar,
     (3 as libc::c_int + 12 as libc::c_int + 48 as libc::c_int + 128 as libc::c_int)
         as libc::c_uchar,
-    (3 as libc::c_int + 12 as libc::c_int + 48 as libc::c_int + 64 as libc::c_int)
-        as libc::c_uchar,
+    (3 as libc::c_int + 12 as libc::c_int + 48 as libc::c_int + 64 as libc::c_int) as libc::c_uchar,
     (3 as libc::c_int + 12 as libc::c_int + 48 as libc::c_int + 192 as libc::c_int)
         as libc::c_uchar,
 ];
 unsafe extern "C" fn rev16(mut n: libc::c_uint) -> libc::c_uint {
-    return ((reverseTable[(n & 0xff as libc::c_int as libc::c_uint) as usize]
-        as libc::c_int) << 8 as libc::c_int
-        | reverseTable[(n >> 8 as libc::c_int & 0xff as libc::c_int as libc::c_uint)
-            as usize] as libc::c_int) as libc::c_uint;
+    return ((reverseTable[(n & 0xff as libc::c_int as libc::c_uint) as usize] as libc::c_int)
+        << 8 as libc::c_int
+        | reverseTable[(n >> 8 as libc::c_int & 0xff as libc::c_int as libc::c_uint) as usize]
+            as libc::c_int) as libc::c_uint;
 }
 unsafe extern "C" fn bits(mut s: *mut State, mut n: libc::c_int) -> libc::c_int {
-    let mut v: libc::c_int = ((*s).bits
-        & (((1 as libc::c_int) << n) - 1 as libc::c_int) as libc::c_uint) as libc::c_int;
+    let mut v: libc::c_int =
+        ((*s).bits & (((1 as libc::c_int) << n) - 1 as libc::c_int) as libc::c_uint) as libc::c_int;
     (*s).bits >>= n;
     (*s).count = ((*s).count).wrapping_sub(n as libc::c_uint);
     while (*s).count < 16 as libc::c_int as libc::c_uint {
@@ -3541,21 +3426,14 @@ unsafe extern "C" fn bits(mut s: *mut State, mut n: libc::c_int) -> libc::c_int 
     }
     return v;
 }
-unsafe extern "C" fn emit(
-    mut s: *mut State,
-    mut len: libc::c_int,
-) -> *mut libc::c_uchar {
+unsafe extern "C" fn emit(mut s: *mut State, mut len: libc::c_int) -> *mut libc::c_uchar {
     (*s).out = ((*s).out).offset(len as isize);
     if !((*s).out <= (*s).outend) {
         longjmp(((*s).jmp).as_mut_ptr(), 1 as libc::c_int);
     }
     return ((*s).out).offset(-(len as isize));
 }
-unsafe extern "C" fn copy(
-    mut s: *mut State,
-    mut src: *const libc::c_uchar,
-    mut len: libc::c_int,
-) {
+unsafe extern "C" fn copy(mut s: *mut State, mut src: *const libc::c_uchar, mut len: libc::c_int) {
     let mut dest: *mut libc::c_uchar = emit(s, len);
     loop {
         let fresh33 = len;
@@ -3568,7 +3446,7 @@ unsafe extern "C" fn copy(
         let fresh35 = dest;
         dest = dest.offset(1);
         *fresh35 = *fresh34;
-    };
+    }
 }
 unsafe extern "C" fn build(
     mut s: *mut State,
@@ -3607,17 +3485,14 @@ unsafe extern "C" fn build(
     counts[0 as libc::c_int as usize] = codes[0 as libc::c_int as usize];
     n = 1 as libc::c_int;
     while n <= 15 as libc::c_int {
-        codes[n
-            as usize] = codes[(n - 1 as libc::c_int) as usize]
-            + counts[(n - 1 as libc::c_int) as usize] << 1 as libc::c_int;
-        first[n
-            as usize] = first[(n - 1 as libc::c_int) as usize]
-            + counts[(n - 1 as libc::c_int) as usize];
+        codes[n as usize] = codes[(n - 1 as libc::c_int) as usize]
+            + counts[(n - 1 as libc::c_int) as usize]
+            << 1 as libc::c_int;
+        first[n as usize] =
+            first[(n - 1 as libc::c_int) as usize] + counts[(n - 1 as libc::c_int) as usize];
         n += 1;
     }
-    if !(first[15 as libc::c_int as usize] + counts[15 as libc::c_int as usize]
-        <= symcount)
-    {
+    if !(first[15 as libc::c_int as usize] + counts[15 as libc::c_int as usize] <= symcount) {
         longjmp(((*s).jmp).as_mut_ptr(), 1 as libc::c_int);
     }
     n = 0 as libc::c_int;
@@ -3630,11 +3505,8 @@ unsafe extern "C" fn build(
             let fresh37 = first[len as usize];
             first[len as usize] = first[len as usize] + 1;
             let mut slot: libc::c_int = fresh37;
-            *tree
-                .offset(
-                    slot as isize,
-                ) = (code << 32 as libc::c_int - len | n << 4 as libc::c_int | len)
-                as libc::c_uint;
+            *tree.offset(slot as isize) =
+                (code << 32 as libc::c_int - len | n << 4 as libc::c_int | len) as libc::c_uint;
         }
         n += 1;
     }
@@ -3648,8 +3520,8 @@ unsafe extern "C" fn decode(
     let mut lo: libc::c_uint = 0 as libc::c_int as libc::c_uint;
     let mut hi: libc::c_uint = max as libc::c_uint;
     let mut key: libc::c_uint = 0;
-    let mut search: libc::c_uint = rev16((*s).bits) << 16 as libc::c_int
-        | 0xffff as libc::c_int as libc::c_uint;
+    let mut search: libc::c_uint =
+        rev16((*s).bits) << 16 as libc::c_int | 0xffff as libc::c_int as libc::c_uint;
     while lo < hi {
         let mut guess: libc::c_uint = lo
             .wrapping_add(hi)
@@ -3669,15 +3541,14 @@ unsafe extern "C" fn decode(
         longjmp(((*s).jmp).as_mut_ptr(), 1 as libc::c_int);
     }
     bits(s, (key & 0xf as libc::c_int as libc::c_uint) as libc::c_int);
-    return (key >> 4 as libc::c_int & 0xfff as libc::c_int as libc::c_uint)
-        as libc::c_int;
+    return (key >> 4 as libc::c_int & 0xfff as libc::c_int as libc::c_uint) as libc::c_int;
 }
 unsafe extern "C" fn run(mut s: *mut State, mut sym: libc::c_int) {
-    let mut length: libc::c_int = bits(s, lenBits[sym as usize] as libc::c_int)
-        + lenBase[sym as usize];
+    let mut length: libc::c_int =
+        bits(s, lenBits[sym as usize] as libc::c_int) + lenBase[sym as usize];
     let mut dsym: libc::c_int = decode(s, ((*s).distcodes).as_mut_ptr(), (*s).tdist);
-    let mut offs: libc::c_int = bits(s, distBits[dsym as usize] as libc::c_int)
-        + distBase[dsym as usize];
+    let mut offs: libc::c_int =
+        bits(s, distBits[dsym as usize] as libc::c_int) + distBase[dsym as usize];
     copy(s, ((*s).out).offset(-(offs as isize)), length);
 }
 unsafe extern "C" fn block(mut s: *mut State) {
@@ -3691,11 +3562,14 @@ unsafe extern "C" fn block(mut s: *mut State) {
             }
             run(s, sym - 257 as libc::c_int);
         }
-    };
+    }
 }
 unsafe extern "C" fn stored(mut s: *mut State) {
     let mut len: libc::c_int = 0;
-    bits(s, ((*s).count & 7 as libc::c_int as libc::c_uint) as libc::c_int);
+    bits(
+        s,
+        ((*s).count & 7 as libc::c_int as libc::c_uint) as libc::c_int,
+    );
     len = bits(s, 16 as libc::c_int);
     if !((len as libc::c_uint ^ (*s).bits) & 0xffff as libc::c_int as libc::c_uint
         == 0xffff as libc::c_int as libc::c_uint)
@@ -3737,15 +3611,13 @@ unsafe extern "C" fn fixed(mut s: *mut State) {
         lens[(288 as libc::c_int + n) as usize] = 5 as libc::c_int as libc::c_uchar;
         n += 1;
     }
-    (*s)
-        .tlit = build(
+    (*s).tlit = build(
         s,
         ((*s).litcodes).as_mut_ptr(),
         lens.as_mut_ptr(),
         288 as libc::c_int,
     );
-    (*s)
-        .tdist = build(
+    (*s).tdist = build(
         s,
         ((*s).distcodes).as_mut_ptr(),
         lens.as_mut_ptr().offset(288 as libc::c_int as isize),
@@ -3788,8 +3660,7 @@ unsafe extern "C" fn dynamic(mut s: *mut State) {
         lenlens[order[n as usize] as usize] = bits(s, 3 as libc::c_int) as libc::c_uchar;
         n += 1;
     }
-    (*s)
-        .tlen = build(
+    (*s).tlen = build(
         s,
         ((*s).lencodes).as_mut_ptr(),
         lenlens.as_mut_ptr(),
@@ -3831,8 +3702,7 @@ unsafe extern "C" fn dynamic(mut s: *mut State) {
         }
     }
     (*s).tlit = build(s, ((*s).litcodes).as_mut_ptr(), lens.as_mut_ptr(), nlit);
-    (*s)
-        .tdist = build(
+    (*s).tdist = build(
         s,
         ((*s).distcodes).as_mut_ptr(),
         lens.as_mut_ptr().offset(nlit as isize),
@@ -3852,7 +3722,9 @@ pub unsafe extern "C" fn tigrInflate(
         ::core::mem::size_of::<State>() as libc::c_ulong,
     ) as *mut State;
     (*s).in_0 = in_0 as *mut libc::c_uchar;
-    (*s).inend = ((*s).in_0).offset(inlen as isize).offset(2 as libc::c_int as isize);
+    (*s).inend = ((*s).in_0)
+        .offset(inlen as isize)
+        .offset(2 as libc::c_int as isize);
     (*s).out = out as *mut libc::c_uchar;
     (*s).outend = ((*s).out).offset(outlen as isize);
     (*s).bits = 0 as libc::c_int as libc::c_uint;
@@ -7735,17 +7607,15 @@ pub static mut tigr_font: [libc::c_uchar; 3843] = [
     0x82 as libc::c_int as libc::c_uchar,
 ];
 #[no_mangle]
-pub static mut tigr_font_size: libc::c_int = ::core::mem::size_of::<[libc::c_uchar; 3843]>() as libc::c_ulong as libc::c_int;
+pub static mut tigr_font_size: libc::c_int =
+    ::core::mem::size_of::<[libc::c_uchar; 3843]>() as libc::c_ulong as libc::c_int;
 #[no_mangle]
 pub static mut tigrStockFont: TigrFont = TigrFont {
     bitmap: 0 as *const Tigr as *mut Tigr,
     numGlyphs: 0,
     glyphs: 0 as *const TigrGlyph as *mut TigrGlyph,
 };
-#[no_mangle]
-pub static mut tfont: *mut TigrFont = unsafe {
-    &tigrStockFont as *const TigrFont as *mut TigrFont
-};
+pub static mut tfont: *mut TigrFont = unsafe { &tigrStockFont as *const TigrFont as *mut TigrFont };
 static mut cp1252: [libc::c_int; 128] = [
     0x20ac as libc::c_int,
     0xfffd as libc::c_int,
@@ -7885,8 +7755,9 @@ unsafe extern "C" fn border(
     let mut c: TPixel = tigrGet(bmp, x, y);
     return (c.r as libc::c_int == top.r as libc::c_int
         && c.g as libc::c_int == top.g as libc::c_int
-        && c.b as libc::c_int == top.b as libc::c_int || x >= (*bmp).w || y >= (*bmp).h)
-        as libc::c_int;
+        && c.b as libc::c_int == top.b as libc::c_int
+        || x >= (*bmp).w
+        || y >= (*bmp).h) as libc::c_int;
 }
 unsafe extern "C" fn scan(
     mut bmp: *mut Tigr,
@@ -7908,7 +7779,7 @@ unsafe extern "C" fn scan(
 }
 #[no_mangle]
 pub unsafe extern "C" fn tigrLoadGlyphs(
-    mut font: *mut TigrFont,
+    font: *mut TigrFont,
     mut codepage: libc::c_int,
 ) -> libc::c_int {
     let mut i: libc::c_int = 0;
@@ -7927,8 +7798,7 @@ pub unsafe extern "C" fn tigrLoadGlyphs(
         }
         _ => {}
     }
-    (*font)
-        .glyphs = calloc(
+    (*font).glyphs = calloc(
         (*font).numGlyphs as libc::c_ulong,
         ::core::mem::size_of::<TigrGlyph>() as libc::c_ulong,
     ) as *mut TigrGlyph;
@@ -7947,8 +7817,7 @@ pub unsafe extern "C" fn tigrLoadGlyphs(
         while border((*font).bitmap, x, y + h) == 0 {
             h += 1;
         }
-        g = &mut *((*font).glyphs).offset((i - 32 as libc::c_int) as isize)
-            as *mut TigrGlyph;
+        g = &mut *((*font).glyphs).offset((i - 32 as libc::c_int) as isize) as *mut TigrGlyph;
         if i < 128 as libc::c_int {
             (*g).code = i;
         } else if codepage == 1252 as libc::c_int {
@@ -7976,13 +7845,10 @@ pub unsafe extern "C" fn tigrLoadGlyphs(
         let mut j: libc::c_int = i;
         let mut g_0: TigrGlyph = *((*font).glyphs).offset(i as isize);
         while j > 0 as libc::c_int
-            && (*((*font).glyphs).offset((j - 1 as libc::c_int) as isize)).code
-                > g_0.code
+            && (*((*font).glyphs).offset((j - 1 as libc::c_int) as isize)).code > g_0.code
         {
-            *((*font).glyphs)
-                .offset(
-                    j as isize,
-                ) = *((*font).glyphs).offset((j - 1 as libc::c_int) as isize);
+            *((*font).glyphs).offset(j as isize) =
+                *((*font).glyphs).offset((j - 1 as libc::c_int) as isize);
             j -= 1;
         }
         *((*font).glyphs).offset(j as isize) = g_0;
@@ -8012,10 +7878,7 @@ pub unsafe extern "C" fn tigrFreeFont(mut font: *mut TigrFont) {
     free((*font).glyphs as *mut libc::c_void);
     free(font as *mut libc::c_void);
 }
-unsafe extern "C" fn get(
-    mut font: *mut TigrFont,
-    mut code: libc::c_int,
-) -> *mut TigrGlyph {
+unsafe extern "C" fn get(mut font: *mut TigrFont, mut code: libc::c_int) -> *mut TigrGlyph {
     let mut lo: libc::c_uint = 0 as libc::c_int as libc::c_uint;
     let mut hi: libc::c_uint = (*font).numGlyphs as libc::c_uint;
     while lo < hi {
@@ -8029,26 +7892,23 @@ unsafe extern "C" fn get(
         }
     }
     if lo == 0 as libc::c_int as libc::c_uint
-        || (*((*font).glyphs)
-            .offset(lo.wrapping_sub(1 as libc::c_int as libc::c_uint) as isize))
-            .code != code
+        || (*((*font).glyphs).offset(lo.wrapping_sub(1 as libc::c_int as libc::c_uint) as isize))
+            .code
+            != code
     {
         return &mut *((*font).glyphs).offset(('?' as i32 - 32 as libc::c_int) as isize)
-            as *mut TigrGlyph
+            as *mut TigrGlyph;
     } else {
         return &mut *((*font).glyphs)
             .offset(lo.wrapping_sub(1 as libc::c_int as libc::c_uint) as isize)
-            as *mut TigrGlyph
+            as *mut TigrGlyph;
     };
 }
 #[no_mangle]
 pub unsafe extern "C" fn tigrSetupFont(mut font: *mut TigrFont) {
     if font == tfont && ((*tfont).bitmap).is_null() {
-        (*tfont)
-            .bitmap = tigrLoadImageMem(
-            tigr_font.as_ptr() as *const libc::c_void,
-            tigr_font_size,
-        );
+        (*tfont).bitmap =
+            tigrLoadImageMem(tigr_font.as_ptr() as *const libc::c_void, tigr_font_size);
         tigrLoadGlyphs(tfont, 1252 as libc::c_int);
     }
 }
@@ -8077,8 +7937,8 @@ pub unsafe extern "C" fn tigrPrint(
         args_0.as_va_list(),
     );
     tmp[(::core::mem::size_of::<[libc::c_char; 1024]>() as libc::c_ulong)
-        .wrapping_sub(1 as libc::c_int as libc::c_ulong)
-        as usize] = 0 as libc::c_int as libc::c_char;
+        .wrapping_sub(1 as libc::c_int as libc::c_ulong) as usize] =
+        0 as libc::c_int as libc::c_char;
     p = tmp.as_mut_ptr();
     while *p != 0 {
         p = tigrDecodeUTF8(p, &mut c);
@@ -8146,16 +8006,16 @@ pub unsafe extern "C" fn tigrTextHeight(
 }
 #[no_mangle]
 pub unsafe extern "C" fn tigrInternal(mut bmp: *mut Tigr) -> *mut TigrInternal {
-    if !((*bmp).handle).is_null() {} else {
+    if !((*bmp).handle).is_null() {
+    } else {
         __assert_fail(
             b"bmp->handle\0" as *const u8 as *const libc::c_char,
             b"src/tigr.c\0" as *const u8 as *const libc::c_char,
             1857 as libc::c_int as libc::c_uint,
-            (*::core::mem::transmute::<
-                &[u8; 35],
-                &[libc::c_char; 35],
-            >(b"TigrInternal *tigrInternal(Tigr *)\0"))
-                .as_ptr(),
+            (*::core::mem::transmute::<&[u8; 35], &[libc::c_char; 35]>(
+                b"TigrInternal *tigrInternal(Tigr *)\0",
+            ))
+            .as_ptr(),
         );
     }
     return bmp.offset(1 as libc::c_int as isize) as *mut TigrInternal;
@@ -8180,7 +8040,7 @@ unsafe extern "C" fn initX11Stuff() {
         }
         root = (*((*(dpy as _XPrivDisplay)).screens)
             .offset((*(dpy as _XPrivDisplay)).default_screen as isize))
-            .root;
+        .root;
         static mut attribList: [libc::c_int; 13] = [
             0x8011 as libc::c_int,
             0x1 as libc::c_int,
@@ -8217,27 +8077,18 @@ unsafe extern "C" fn initX11Stuff() {
                 b"No appropriate visual found\0" as *const u8 as *const libc::c_char,
             );
         }
-        let mut tmpCtx: GLXContext = glXCreateContext(
-            dpy,
-            vi,
-            0 as GLXContext,
-            1 as libc::c_int,
-        );
+        let mut tmpCtx: GLXContext = glXCreateContext(dpy, vi, 0 as GLXContext, 1 as libc::c_int);
         glXCreateContextAttribsARB = ::core::mem::transmute::<
             __GLXextFuncPtr,
             PFNGLXCREATECONTEXTATTRIBSARBPROC,
-        >(
-            glXGetProcAddressARB(
-                b"glXCreateContextAttribsARB\0" as *const u8 as *const libc::c_char
-                    as *const GLubyte,
-            ),
-        );
+        >(glXGetProcAddressARB(
+            b"glXCreateContextAttribsARB\0" as *const u8 as *const libc::c_char as *const GLubyte,
+        ));
         glXDestroyContext(dpy, tmpCtx);
         if glXCreateContextAttribsARB.is_none() {
             tigrError(
                 0 as *mut Tigr,
-                b"Failed to get glXCreateContextAttribsARB\0" as *const u8
-                    as *const libc::c_char,
+                b"Failed to get glXCreateContextAttribsARB\0" as *const u8 as *const libc::c_char,
             );
         }
         inputMethod = XOpenIM(
@@ -8264,10 +8115,8 @@ unsafe extern "C" fn hasGLXExtension(
     mut display: *mut Display,
     mut wanted: *const libc::c_char,
 ) -> libc::c_int {
-    let mut extensions: *const libc::c_char = glXQueryExtensionsString(
-        display,
-        (*(display as _XPrivDisplay)).default_screen,
-    );
+    let mut extensions: *const libc::c_char =
+        glXQueryExtensionsString(display, (*(display as _XPrivDisplay)).default_screen);
     let mut dup: *mut libc::c_char = strdup(extensions);
     let mut found: *mut libc::c_char = 0 as *mut libc::c_char;
     let mut start: *mut libc::c_char = dup;
@@ -8290,48 +8139,39 @@ unsafe extern "C" fn setupVSync(mut display: *mut Display, mut win: Window) {
         let mut glXSwapIntervalEXT: PFNGLXSWAPINTERVALEXTPROC = ::core::mem::transmute::<
             __GLXextFuncPtr,
             PFNGLXSWAPINTERVALEXTPROC,
-        >(
-            glXGetProcAddressARB(
-                b"glXSwapIntervalEXT\0" as *const u8 as *const libc::c_char
-                    as *const GLubyte,
-            ),
-        );
+        >(glXGetProcAddressARB(
+            b"glXSwapIntervalEXT\0" as *const u8 as *const libc::c_char as *const GLubyte,
+        ));
         if glXSwapIntervalEXT.is_some() {
-            glXSwapIntervalEXT
-                .expect("non-null function pointer")(display, win, 1 as libc::c_int);
+            glXSwapIntervalEXT.expect("non-null function pointer")(display, win, 1 as libc::c_int);
         }
     } else if hasGLXExtension(
-            display,
-            b"GLX_MESA_swap_control\0" as *const u8 as *const libc::c_char,
-        ) != 0
-        {
+        display,
+        b"GLX_MESA_swap_control\0" as *const u8 as *const libc::c_char,
+    ) != 0
+    {
         let mut glXSwapIntervalMESA: PFNGLXSWAPINTERVALMESAPROC = ::core::mem::transmute::<
             __GLXextFuncPtr,
             PFNGLXSWAPINTERVALMESAPROC,
-        >(
-            glXGetProcAddressARB(
-                b"glXSwapIntervalMESA\0" as *const u8 as *const libc::c_char
-                    as *const GLubyte,
-            ),
-        );
+        >(glXGetProcAddressARB(
+            b"glXSwapIntervalMESA\0" as *const u8 as *const libc::c_char as *const GLubyte,
+        ));
         if glXSwapIntervalMESA.is_some() {
-            glXSwapIntervalMESA
-                .expect("non-null function pointer")(1 as libc::c_int as libc::c_uint);
+            glXSwapIntervalMESA.expect("non-null function pointer")(
+                1 as libc::c_int as libc::c_uint,
+            );
         }
     } else if hasGLXExtension(
-            display,
-            b"GLX_SGI_swap_control\0" as *const u8 as *const libc::c_char,
-        ) != 0
-        {
+        display,
+        b"GLX_SGI_swap_control\0" as *const u8 as *const libc::c_char,
+    ) != 0
+    {
         let mut glXSwapIntervalSGI: PFNGLXSWAPINTERVALSGIPROC = ::core::mem::transmute::<
             __GLXextFuncPtr,
             PFNGLXSWAPINTERVALSGIPROC,
-        >(
-            glXGetProcAddressARB(
-                b"glXSwapIntervalSGI\0" as *const u8 as *const libc::c_char
-                    as *const GLubyte,
-            ),
-        );
+        >(glXGetProcAddressARB(
+            b"glXSwapIntervalSGI\0" as *const u8 as *const libc::c_char as *const GLubyte,
+        ));
         if glXSwapIntervalSGI.is_some() {
             glXSwapIntervalSGI.expect("non-null function pointer")(1 as libc::c_int);
         }
@@ -8416,7 +8256,8 @@ pub unsafe extern "C" fn tigrWindow(
         scale = 1 as libc::c_int;
     } else {
         let mut screen: *mut Screen = &mut *((*(dpy as _XPrivDisplay)).screens)
-            .offset((*(dpy as _XPrivDisplay)).default_screen as isize) as *mut Screen;
+            .offset((*(dpy as _XPrivDisplay)).default_screen as isize)
+            as *mut Screen;
         let mut maxW: libc::c_int = (*screen).width;
         let mut maxH: libc::c_int = (*screen).height;
         scale = tigrCalcScale(w, h, maxW, maxH);
@@ -8436,8 +8277,8 @@ pub unsafe extern "C" fn tigrWindow(
         (*vi).depth,
         1 as libc::c_int as libc::c_uint,
         (*vi).visual,
-        ((1 as libc::c_long) << 13 as libc::c_int
-            | (1 as libc::c_long) << 11 as libc::c_int) as libc::c_ulong,
+        ((1 as libc::c_long) << 13 as libc::c_int | (1 as libc::c_long) << 11 as libc::c_int)
+            as libc::c_ulong,
         &mut swa,
     );
     XMapWindow(dpy, xwin);
@@ -8468,12 +8309,10 @@ pub unsafe extern "C" fn tigrWindow(
             5 as libc::c_int,
         );
         let mut screen_0: libc::c_int = (*(dpy as _XPrivDisplay)).default_screen;
-        let mut dWidth: libc::c_int = (*((*(dpy as _XPrivDisplay)).screens)
-            .offset(screen_0 as isize))
-            .width;
-        let mut dHeight: libc::c_int = (*((*(dpy as _XPrivDisplay)).screens)
-            .offset(screen_0 as isize))
-            .height;
+        let mut dWidth: libc::c_int =
+            (*((*(dpy as _XPrivDisplay)).screens).offset(screen_0 as isize)).width;
+        let mut dHeight: libc::c_int =
+            (*((*(dpy as _XPrivDisplay)).screens).offset(screen_0 as isize)).height;
         XMoveResizeWindow(
             dpy,
             xwin,
@@ -8576,9 +8415,7 @@ pub unsafe extern "C" fn tigrWindow(
         0 as *mut libc::c_void,
     );
     if ic.is_null() {
-        printf(
-            b"Failed to create input context\n\0" as *const u8 as *const libc::c_char,
-        );
+        printf(b"Failed to create input context\n\0" as *const u8 as *const libc::c_char);
         exit(0 as libc::c_int);
     }
     XSetICFocus(ic);
@@ -8591,10 +8428,7 @@ pub unsafe extern "C" fn tigrWindow(
         3 as libc::c_int,
         0 as libc::c_long as libc::c_int,
     ];
-    glc = glXCreateContextAttribsARB
-        .expect(
-            "non-null function pointer",
-        )(
+    glc = glXCreateContextAttribsARB.expect("non-null function pointer")(
         dpy,
         fbConfig,
         0 as GLXContext,
@@ -8641,7 +8475,13 @@ pub unsafe extern "C" fn tigrWindow(
     if flags & 32 as libc::c_int != 0 {
         tigrHideCursor(win);
     }
-    tigrPosition(bmp, (*win).scale, (*bmp).w, (*bmp).h, ((*win).pos).as_mut_ptr());
+    tigrPosition(
+        bmp,
+        (*win).scale,
+        (*bmp).w,
+        (*bmp).h,
+        ((*win).pos).as_mut_ptr(),
+    );
     tigrGAPICreate(bmp);
     tigrGAPIBegin(bmp);
     return bmp;
@@ -8674,43 +8514,37 @@ pub unsafe extern "C" fn tigrGAPIEnd(mut _bmp: *mut Tigr) -> libc::c_int {
     };
 }
 #[no_mangle]
-pub unsafe extern "C" fn tigrKeyDown(
-    mut bmp: *mut Tigr,
-    mut key: libc::c_int,
-) -> libc::c_int {
+pub unsafe extern "C" fn tigrKeyDown(mut bmp: *mut Tigr, mut key: libc::c_int) -> libc::c_int {
     let mut win: *mut TigrInternal = 0 as *mut TigrInternal;
-    if key < 256 as libc::c_int {} else {
+    if key < 256 as libc::c_int {
+    } else {
         __assert_fail(
             b"key < 256\0" as *const u8 as *const libc::c_char,
             b"src/tigr.c\0" as *const u8 as *const libc::c_char,
             4611 as libc::c_int as libc::c_uint,
-            (*::core::mem::transmute::<
-                &[u8; 29],
-                &[libc::c_char; 29],
-            >(b"int tigrKeyDown(Tigr *, int)\0"))
-                .as_ptr(),
+            (*::core::mem::transmute::<&[u8; 29], &[libc::c_char; 29]>(
+                b"int tigrKeyDown(Tigr *, int)\0",
+            ))
+            .as_ptr(),
         );
     }
     win = tigrInternal(bmp);
-    return ((*win).keys[key as usize] as libc::c_int != 0
-        && (*win).prev[key as usize] == 0) as libc::c_int;
+    return ((*win).keys[key as usize] as libc::c_int != 0 && (*win).prev[key as usize] == 0)
+        as libc::c_int;
 }
 #[no_mangle]
-pub unsafe extern "C" fn tigrKeyHeld(
-    mut bmp: *mut Tigr,
-    mut key: libc::c_int,
-) -> libc::c_int {
+pub unsafe extern "C" fn tigrKeyHeld(mut bmp: *mut Tigr, mut key: libc::c_int) -> libc::c_int {
     let mut win: *mut TigrInternal = 0 as *mut TigrInternal;
-    if key < 256 as libc::c_int {} else {
+    if key < 256 as libc::c_int {
+    } else {
         __assert_fail(
             b"key < 256\0" as *const u8 as *const libc::c_char,
             b"src/tigr.c\0" as *const u8 as *const libc::c_char,
             4618 as libc::c_int as libc::c_uint,
-            (*::core::mem::transmute::<
-                &[u8; 29],
-                &[libc::c_char; 29],
-            >(b"int tigrKeyHeld(Tigr *, int)\0"))
-                .as_ptr(),
+            (*::core::mem::transmute::<&[u8; 29], &[libc::c_char; 29]>(
+                b"int tigrKeyHeld(Tigr *, int)\0",
+            ))
+            .as_ptr(),
         );
     }
     win = tigrInternal(bmp);
@@ -8803,21 +8637,18 @@ pub unsafe extern "C" fn tigrKeyFromX11(mut sym: KeySym) -> uint8_t {
     return 0 as libc::c_int as uint8_t;
 }
 unsafe extern "C" fn tigrUpdateModifiers(mut win: *mut TigrInternal) {
-    (*win)
-        .keys[TK_SHIFT as libc::c_int
-        as usize] = ((*win).keys[TK_LSHIFT as libc::c_int as usize] as libc::c_int != 0
-        || (*win).keys[TK_RSHIFT as libc::c_int as usize] as libc::c_int != 0)
-        as libc::c_int as libc::c_char;
-    (*win)
-        .keys[TK_CONTROL as libc::c_int
-        as usize] = ((*win).keys[TK_LCONTROL as libc::c_int as usize] as libc::c_int != 0
-        || (*win).keys[TK_RCONTROL as libc::c_int as usize] as libc::c_int != 0)
-        as libc::c_int as libc::c_char;
-    (*win)
-        .keys[TK_ALT as libc::c_int
-        as usize] = ((*win).keys[TK_LALT as libc::c_int as usize] as libc::c_int != 0
-        || (*win).keys[TK_RALT as libc::c_int as usize] as libc::c_int != 0)
-        as libc::c_int as libc::c_char;
+    (*win).keys[TK_SHIFT as libc::c_int as usize] =
+        ((*win).keys[TK_LSHIFT as libc::c_int as usize] as libc::c_int != 0
+            || (*win).keys[TK_RSHIFT as libc::c_int as usize] as libc::c_int != 0)
+            as libc::c_int as libc::c_char;
+    (*win).keys[TK_CONTROL as libc::c_int as usize] =
+        ((*win).keys[TK_LCONTROL as libc::c_int as usize] as libc::c_int != 0
+            || (*win).keys[TK_RCONTROL as libc::c_int as usize] as libc::c_int != 0)
+            as libc::c_int as libc::c_char;
+    (*win).keys[TK_ALT as libc::c_int as usize] =
+        ((*win).keys[TK_LALT as libc::c_int as usize] as libc::c_int != 0
+            || (*win).keys[TK_RALT as libc::c_int as usize] as libc::c_int != 0)
+            as libc::c_int as libc::c_char;
 }
 unsafe extern "C" fn tigrInterpretChar(
     mut win: *mut TigrInternal,
@@ -8904,27 +8735,26 @@ unsafe extern "C" fn tigrProcessInput(
                 | (1 as libc::c_int) << 10 as libc::c_int) as libc::c_uint;
         (*win).mouseX = (winX - (*win).pos[0 as libc::c_int as usize]) / (*win).scale;
         (*win).mouseY = (winY - (*win).pos[1 as libc::c_int as usize]) / (*win).scale;
-        if buttons != prevButtons && (winX > 0 as libc::c_int && winX < winWidth)
+        if buttons != prevButtons
+            && (winX > 0 as libc::c_int && winX < winWidth)
             && (winY > 0 as libc::c_int && winY < winHeight)
         {
-            (*win)
-                .mouseButtons = if buttons
-                & ((1 as libc::c_int) << 8 as libc::c_int) as libc::c_uint != 0
-            {
-                1 as libc::c_int
-            } else if 0 as libc::c_int as libc::c_uint
+            (*win).mouseButtons =
+                if buttons & ((1 as libc::c_int) << 8 as libc::c_int) as libc::c_uint != 0 {
+                    1 as libc::c_int
+                } else if 0 as libc::c_int as libc::c_uint
                     | buttons & ((1 as libc::c_int) << 10 as libc::c_int) as libc::c_uint
                     != 0
                 {
-                2 as libc::c_int
-            } else if 0 as libc::c_int as libc::c_uint
+                    2 as libc::c_int
+                } else if 0 as libc::c_int as libc::c_uint
                     | buttons & ((1 as libc::c_int) << 9 as libc::c_int) as libc::c_uint
                     != 0
                 {
-                4 as libc::c_int
-            } else {
-                0 as libc::c_int
-            };
+                    4 as libc::c_int
+                } else {
+                    0 as libc::c_int
+                };
         }
         prevButtons = buttons;
     }
@@ -8938,14 +8768,10 @@ unsafe extern "C" fn tigrProcessInput(
         if thisBlock as libc::c_int != prevBlock as libc::c_int {
             let mut j: libc::c_int = 0 as libc::c_int;
             while j < 8 as libc::c_int {
-                let mut thisBit: libc::c_int = thisBlock as libc::c_int
-                    & 1 as libc::c_int;
-                let mut prevBit: libc::c_int = prevBlock as libc::c_int
-                    & 1 as libc::c_int;
-                thisBlock = (thisBlock as libc::c_int >> 1 as libc::c_int)
-                    as libc::c_char;
-                prevBlock = (prevBlock as libc::c_int >> 1 as libc::c_int)
-                    as libc::c_char;
+                let mut thisBit: libc::c_int = thisBlock as libc::c_int & 1 as libc::c_int;
+                let mut prevBit: libc::c_int = prevBlock as libc::c_int & 1 as libc::c_int;
+                thisBlock = (thisBlock as libc::c_int >> 1 as libc::c_int) as libc::c_char;
+                prevBlock = (prevBlock as libc::c_int >> 1 as libc::c_int) as libc::c_char;
                 if thisBit != prevBit {
                     let mut keyCode: libc::c_int = 8 as libc::c_int * i + j;
                     let mut keySym: KeySym = XkbKeycodeToKeysym(
@@ -8959,12 +8785,7 @@ unsafe extern "C" fn tigrProcessInput(
                         (*win).keys[key as usize] = thisBit as libc::c_char;
                         tigrUpdateModifiers(win);
                         if thisBit != 0 {
-                            tigrInterpretChar(
-                                win,
-                                root_0,
-                                keyCode as libc::c_uint,
-                                mask,
-                            );
+                            tigrInterpretChar(win, root_0, keyCode as libc::c_uint, mask);
                         }
                     }
                 }
@@ -8979,12 +8800,8 @@ unsafe extern "C" fn tigrProcessInput(
         32 as libc::c_int as libc::c_ulong,
     );
     let mut event: XEvent = _XEvent { type_0: 0 };
-    while XCheckTypedWindowEvent((*win).dpy, (*win).win, 33 as libc::c_int, &mut event)
-        != 0
-    {
-        if event.xclient.data.l[0 as libc::c_int as usize] as libc::c_ulong
-            == wmDeleteMessage
-        {
+    while XCheckTypedWindowEvent((*win).dpy, (*win).win, 33 as libc::c_int, &mut event) != 0 {
+        if event.xclient.data.l[0 as libc::c_int as usize] as libc::c_ulong == wmDeleteMessage {
             glXMakeCurrent(
                 (*win).dpy,
                 0 as libc::c_long as GLXDrawable,
@@ -9034,13 +8851,18 @@ pub unsafe extern "C" fn tigrUpdate(mut bmp: *mut Tigr) {
     if (*win).flags & 1 as libc::c_int != 0 {
         tigrResize(bmp, gwa.width / (*win).scale, gwa.height / (*win).scale);
     } else {
-        (*win)
-            .scale = tigrEnforceScale(
+        (*win).scale = tigrEnforceScale(
             tigrCalcScale((*bmp).w, (*bmp).h, gwa.width, gwa.height),
             (*win).flags,
         );
     }
-    tigrPosition(bmp, (*win).scale, gwa.width, gwa.height, ((*win).pos).as_mut_ptr());
+    tigrPosition(
+        bmp,
+        (*win).scale,
+        gwa.width,
+        gwa.height,
+        ((*win).pos).as_mut_ptr(),
+    );
     glXMakeCurrent((*win).dpy, (*win).win, (*win).glc);
     tigrGAPIPresent(bmp, gwa.width, gwa.height);
     glXSwapBuffers((*win).dpy, (*win).win);
@@ -9080,8 +8902,8 @@ pub unsafe extern "C" fn tigrError(
         args_0.as_va_list(),
     );
     tmp[(::core::mem::size_of::<[libc::c_char; 1024]>() as libc::c_ulong)
-        .wrapping_sub(1 as libc::c_int as libc::c_ulong)
-        as usize] = 0 as libc::c_int as libc::c_char;
+        .wrapping_sub(1 as libc::c_int as libc::c_ulong) as usize] =
+        0 as libc::c_int as libc::c_char;
     printf(
         b"tigr fatal error: %s\n\0" as *const u8 as *const libc::c_char,
         tmp.as_mut_ptr(),
@@ -9091,10 +8913,13 @@ pub unsafe extern "C" fn tigrError(
 #[no_mangle]
 pub unsafe extern "C" fn tigrTime() -> libc::c_float {
     static mut lastTime: libc::c_double = 0 as libc::c_int as libc::c_double;
-    let mut tv: timeval = timeval { tv_sec: 0, tv_usec: 0 };
+    let mut tv: timeval = timeval {
+        tv_sec: 0,
+        tv_usec: 0,
+    };
     gettimeofday(&mut tv, 0 as *mut libc::c_void);
-    let mut now: libc::c_double = tv.tv_sec as libc::c_double
-        + tv.tv_usec as libc::c_double / 1000000.0f64;
+    let mut now: libc::c_double =
+        tv.tv_sec as libc::c_double + tv.tv_usec as libc::c_double / 1000000.0f64;
     let mut elapsed: libc::c_double = if lastTime == 0 as libc::c_int as libc::c_double {
         0 as libc::c_int as libc::c_double
     } else {
@@ -9131,7 +8956,11 @@ pub unsafe extern "C" fn tigrTouch(
     if maxPoints > 0 as libc::c_int {
         tigrMouse(bmp, &mut (*points).x, &mut (*points).y, &mut buttons);
     }
-    return if buttons != 0 { 1 as libc::c_int } else { 0 as libc::c_int };
+    return if buttons != 0 {
+        1 as libc::c_int
+    } else {
+        0 as libc::c_int
+    };
 }
 #[no_mangle]
 pub unsafe extern "C" fn tigrCheckGLError(mut state: *const libc::c_char) {
@@ -9194,8 +9023,8 @@ pub unsafe extern "C" fn tigrCreateShaderProgram(
         (*gl).program = 0 as libc::c_int as GLuint;
     }
     let mut vs: GLuint = glCreateShader(0x8b31 as libc::c_int as GLenum);
-    let mut vs_source: *const libc::c_char = &tigr_upscale_gl_vs
-        as *const [libc::c_char; 235] as *const libc::c_char;
+    let mut vs_source: *const libc::c_char =
+        &tigr_upscale_gl_vs as *const [libc::c_char; 235] as *const libc::c_char;
     glShaderSource(
         vs,
         1 as libc::c_int,
@@ -9205,10 +9034,7 @@ pub unsafe extern "C" fn tigrCreateShaderProgram(
     glCompileShader(vs);
     tigrCheckShaderErrors(vs);
     let mut fs: GLuint = glCreateShader(0x8b30 as libc::c_int as GLenum);
-    let mut fs_sources: [*const libc::c_char; 2] = [
-        tigr_upscale_gl_fs.as_ptr(),
-        fxSource,
-    ];
+    let mut fs_sources: [*const libc::c_char; 2] = [tigr_upscale_gl_fs.as_ptr(), fxSource];
     let fs_lengths: [libc::c_int; 2] = [tigr_upscale_gl_fs_size, fxSize];
     glShaderSource(
         fs,
@@ -9225,18 +9051,15 @@ pub unsafe extern "C" fn tigrCreateShaderProgram(
     tigrCheckProgramErrors((*gl).program);
     glDeleteShader(vs);
     glDeleteShader(fs);
-    (*gl)
-        .uniform_projection = glGetUniformLocation(
+    (*gl).uniform_projection = glGetUniformLocation(
         (*gl).program,
         b"projection\0" as *const u8 as *const libc::c_char,
     ) as GLuint;
-    (*gl)
-        .uniform_model = glGetUniformLocation(
+    (*gl).uniform_model = glGetUniformLocation(
         (*gl).program,
         b"model\0" as *const u8 as *const libc::c_char,
     ) as GLuint;
-    (*gl)
-        .uniform_parameters = glGetUniformLocation(
+    (*gl).uniform_parameters = glGetUniformLocation(
         (*gl).program,
         b"parameters\0" as *const u8 as *const libc::c_char,
     ) as GLuint;
@@ -9247,30 +9070,9 @@ pub unsafe extern "C" fn tigrGAPICreate(mut bmp: *mut Tigr) {
     let mut gl: *mut GLStuff = &mut (*win).gl;
     let mut VBO: GLuint = 0;
     let mut vertices: [GLfloat; 24] = [
-        0.0f32,
-        1.0f32,
-        0.0f32,
-        1.0f32,
-        1.0f32,
-        0.0f32,
-        1.0f32,
-        0.0f32,
-        0.0f32,
-        0.0f32,
-        0.0f32,
-        0.0f32,
-        0.0f32,
-        1.0f32,
-        0.0f32,
-        1.0f32,
-        1.0f32,
-        1.0f32,
-        1.0f32,
-        1.0f32,
-        1.0f32,
-        0.0f32,
-        1.0f32,
-        0.0f32,
+        0.0f32, 1.0f32, 0.0f32, 1.0f32, 1.0f32, 0.0f32, 1.0f32, 0.0f32, 0.0f32, 0.0f32, 0.0f32,
+        0.0f32, 0.0f32, 1.0f32, 0.0f32, 1.0f32, 1.0f32, 1.0f32, 1.0f32, 1.0f32, 1.0f32, 0.0f32,
+        1.0f32, 0.0f32,
     ];
     if (*gl).gl_legacy == 0 {
         glGenVertexArrays(1 as libc::c_int, &mut (*gl).vao);
@@ -9395,22 +9197,8 @@ pub unsafe extern "C" fn tigrGAPIDraw(
         let mut tx: libc::c_float = x1 as libc::c_float;
         let mut ty: libc::c_float = y1 as libc::c_float;
         let mut model: [libc::c_float; 16] = [
-            sx,
-            0.0f32,
-            0.0f32,
-            0.0f32,
-            0.0f32,
-            sy,
-            0.0f32,
-            0.0f32,
-            0.0f32,
-            0.0f32,
-            1.0f32,
-            0.0f32,
-            tx,
-            ty,
-            0.0f32,
-            1.0f32,
+            sx, 0.0f32, 0.0f32, 0.0f32, 0.0f32, sy, 0.0f32, 0.0f32, 0.0f32, 0.0f32, 1.0f32, 0.0f32,
+            tx, ty, 0.0f32, 1.0f32,
         ];
         glUniformMatrix4fv(
             uniform_model as GLint,
@@ -9418,7 +9206,11 @@ pub unsafe extern "C" fn tigrGAPIDraw(
             0 as libc::c_int as GLboolean,
             model.as_mut_ptr(),
         );
-        glDrawArrays(0x4 as libc::c_int as GLenum, 0 as libc::c_int, 6 as libc::c_int);
+        glDrawArrays(
+            0x4 as libc::c_int as GLenum,
+            0 as libc::c_int,
+            6 as libc::c_int,
+        );
     } else {
         glBegin(0x7 as libc::c_int as GLenum);
         glTexCoord2f(1.0f32, 0.0f32);
@@ -9500,7 +9292,10 @@ pub unsafe extern "C" fn tigrGAPIPresent(
     }
     if (*gl).gl_user_opengl_rendering != 0 {
         glEnable(0xbe2 as libc::c_int as GLenum);
-        glBlendFunc(0x302 as libc::c_int as GLenum, 0x303 as libc::c_int as GLenum);
+        glBlendFunc(
+            0x302 as libc::c_int as GLenum,
+            0x303 as libc::c_int as GLenum,
+        );
     } else {
         glDisable(0xbe2 as libc::c_int as GLenum);
     }
@@ -9516,14 +9311,16 @@ pub unsafe extern "C" fn tigrGAPIPresent(
     );
     if (*win).widgetsScale > 0 as libc::c_int as libc::c_float {
         glEnable(0xbe2 as libc::c_int as GLenum);
-        glBlendFunc(0x302 as libc::c_int as GLenum, 0x303 as libc::c_int as GLenum);
+        glBlendFunc(
+            0x302 as libc::c_int as GLenum,
+            0x303 as libc::c_int as GLenum,
+        );
         tigrGAPIDraw(
             (*gl).gl_legacy,
             (*gl).uniform_model,
             (*gl).tex[1 as libc::c_int as usize],
             (*win).widgets,
-            (w as libc::c_float
-                - (*(*win).widgets).w as libc::c_float * (*win).widgetsScale)
+            (w as libc::c_float - (*(*win).widgets).w as libc::c_float * (*win).widgetsScale)
                 as libc::c_int,
             0 as libc::c_int,
             w,
@@ -9551,14 +9348,17 @@ pub unsafe extern "C" fn tigrReadFile(
     fseek(file, 0 as libc::c_int as libc::c_long, 2 as libc::c_int);
     len = ftell(file) as size_t;
     fseek(file, 0 as libc::c_int as libc::c_long, 0 as libc::c_int);
-    data = malloc(len.wrapping_add(1 as libc::c_int as libc::c_ulong))
-        as *mut libc::c_char;
+    data = malloc(len.wrapping_add(1 as libc::c_int as libc::c_ulong)) as *mut libc::c_char;
     if data.is_null() {
         fclose(file);
         return 0 as *mut libc::c_void;
     }
-    if fread(data as *mut libc::c_void, 1 as libc::c_int as libc::c_ulong, len, file)
-        != len
+    if fread(
+        data as *mut libc::c_void,
+        1 as libc::c_int as libc::c_ulong,
+        len,
+        file,
+    ) != len
     {
         free(data as *mut libc::c_void);
         fclose(file);
@@ -9631,47 +9431,47 @@ pub unsafe extern "C" fn tigrEncodeUTF8(
     if cp < 0x80 as libc::c_int {
         let fresh42 = text;
         text = text.offset(1);
-        *fresh42 = (0 as libc::c_int | cp >> 0 as libc::c_int & 0x7f as libc::c_int)
-            as libc::c_char;
+        *fresh42 =
+            (0 as libc::c_int | cp >> 0 as libc::c_int & 0x7f as libc::c_int) as libc::c_char;
     } else if cp < 0x800 as libc::c_int {
         let fresh43 = text;
         text = text.offset(1);
-        *fresh43 = (0xc0 as libc::c_int | cp >> 6 as libc::c_int & 0x1f as libc::c_int)
-            as libc::c_char;
+        *fresh43 =
+            (0xc0 as libc::c_int | cp >> 6 as libc::c_int & 0x1f as libc::c_int) as libc::c_char;
         let fresh44 = text;
         text = text.offset(1);
-        *fresh44 = (0x80 as libc::c_int | cp >> 0 as libc::c_int & 0x3f as libc::c_int)
-            as libc::c_char;
+        *fresh44 =
+            (0x80 as libc::c_int | cp >> 0 as libc::c_int & 0x3f as libc::c_int) as libc::c_char;
     } else if cp < 0x10000 as libc::c_int {
         let fresh45 = text;
         text = text.offset(1);
-        *fresh45 = (0xe0 as libc::c_int | cp >> 12 as libc::c_int & 0xf as libc::c_int)
-            as libc::c_char;
+        *fresh45 =
+            (0xe0 as libc::c_int | cp >> 12 as libc::c_int & 0xf as libc::c_int) as libc::c_char;
         let fresh46 = text;
         text = text.offset(1);
-        *fresh46 = (0x80 as libc::c_int | cp >> 6 as libc::c_int & 0x3f as libc::c_int)
-            as libc::c_char;
+        *fresh46 =
+            (0x80 as libc::c_int | cp >> 6 as libc::c_int & 0x3f as libc::c_int) as libc::c_char;
         let fresh47 = text;
         text = text.offset(1);
-        *fresh47 = (0x80 as libc::c_int | cp >> 0 as libc::c_int & 0x3f as libc::c_int)
-            as libc::c_char;
+        *fresh47 =
+            (0x80 as libc::c_int | cp >> 0 as libc::c_int & 0x3f as libc::c_int) as libc::c_char;
     } else {
         let fresh48 = text;
         text = text.offset(1);
-        *fresh48 = (0xf0 as libc::c_int | cp >> 18 as libc::c_int & 0x7 as libc::c_int)
-            as libc::c_char;
+        *fresh48 =
+            (0xf0 as libc::c_int | cp >> 18 as libc::c_int & 0x7 as libc::c_int) as libc::c_char;
         let fresh49 = text;
         text = text.offset(1);
-        *fresh49 = (0x80 as libc::c_int | cp >> 12 as libc::c_int & 0x3f as libc::c_int)
-            as libc::c_char;
+        *fresh49 =
+            (0x80 as libc::c_int | cp >> 12 as libc::c_int & 0x3f as libc::c_int) as libc::c_char;
         let fresh50 = text;
         text = text.offset(1);
-        *fresh50 = (0x80 as libc::c_int | cp >> 6 as libc::c_int & 0x3f as libc::c_int)
-            as libc::c_char;
+        *fresh50 =
+            (0x80 as libc::c_int | cp >> 6 as libc::c_int & 0x3f as libc::c_int) as libc::c_char;
         let fresh51 = text;
         text = text.offset(1);
-        *fresh51 = (0x80 as libc::c_int | cp >> 0 as libc::c_int & 0x3f as libc::c_int)
-            as libc::c_char;
+        *fresh51 =
+            (0x80 as libc::c_int | cp >> 0 as libc::c_int & 0x3f as libc::c_int) as libc::c_char;
     }
     return text;
 }
