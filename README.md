@@ -17,7 +17,7 @@ Please don't use this library if you are learning OpenGL or working on a substan
 - **Basically zero dependencies:** okay, so technically it does use the `libc` crate, but it's impossible to do FFI (and with that, any OpenGL) without it. So essentially, the library is the most minimal it can possibly be.
 - **Low-level access:** being minimalist has advantages! It's easy to have fine-grained control over the entire rendering pipeline.
 - **Cross-platform:** works on essentially all modern operating systems.
-- **Public domain:** the most open and simple license you can imagine. Do whatever you want with it!
+- **Public domain:** the most open and permissive license you can imagine. Do whatever you want with it!
 
 ## Planned features
 
