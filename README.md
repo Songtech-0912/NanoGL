@@ -2,7 +2,11 @@
 
 NanoGL is a pure-Rust, _extremely_ extremely lightweight OpenGL library for computer graphics.
 
-It is derived from a `c2rust` port of the [Tigr](https://github.com/erkkah/tigr) to Rust, with ongoing work to rustify its API.
+It internally uses a `c2rust` port of the [Tigr](https://github.com/erkkah/tigr) to Rust, with ongoing work to rustify its API.
+
+## Example
+
+See [demo.rs](./examples/demo.rs)
 
 ## Use case
 
