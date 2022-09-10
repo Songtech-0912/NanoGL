@@ -1,5 +1,8 @@
-// Reimplementation of C types in Rust
-// drop-in replacment for `libc` crate
+#![allow(dead_code)]
+#![allow(non_camel_case_types)]
+
+// Taken from libc/src/unix/mod.rs
+// C FFI type definitions
 
 pub type c_schar = i8;
 pub type c_uchar = u8;

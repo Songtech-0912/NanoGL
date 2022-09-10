@@ -8,11 +8,9 @@
 #![feature(c_variadic)]
 #![feature(extern_types)]
 #![feature(label_break_value)]
-#![feature(register_tool)]
-#![register_tool(c2rust)]
 
 // Add in once cffi is done
-// pub mod cffi;
+pub mod cffi;
 pub mod tigr;
 
 pub const GL_VERTEX_SHADER: u32 = 0x8B31 as libc::c_int as tigr::GLenum;
@@ -30,7 +28,7 @@ pub fn create_fragment_shader() -> tigr::GLenum {
     unsafe { tigr::glCreateShader(GL_FRAGMENT_SHADER) }
 }
 
-// pub fn create_shader_program(vertex_src, fragment_src) {}
+pub fn create_shader_program(vertex_src: &str, fragment_src: &str) {}
 
 pub fn create_vao() {
     let mut vao = 0;
