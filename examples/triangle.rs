@@ -12,7 +12,7 @@ pub fn main() {
     while window.is_running() {
         window.begin_gl();
 
-        let vertices: [f32; 6] = [0.0, 0.5, 0.5, -0.5, -0.5, -0.5];
+        let _vertices: [f32; 6] = [0.0, 0.5, 0.5, -0.5, -0.5, -0.5];
 
         // Create VAO
         let vao = 0;
