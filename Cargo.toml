@@ -10,4 +10,3 @@ edition = "2021"
 # Will remove libc once
 # custom reimplementation is
 # complete
-libc = "0.2"
