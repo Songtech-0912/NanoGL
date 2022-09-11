@@ -4,6 +4,7 @@
 // Taken from libc/src/unix/mod.rs
 // C FFI type definitions
 
+pub type c_char = i8;
 pub type c_schar = i8;
 pub type c_uchar = u8;
 pub type c_short = i16;
@@ -26,5 +27,7 @@ pub type ssize_t = isize;
 pub type pid_t = i32;
 pub type in_addr_t = u32;
 pub type in_port_t = u16;
-pub type sighandler_t = ::size_t;
-pub type cc_t = ::c_uchar;
+pub type sighandler_t = size_t;
+pub type cc_t = c_uchar;
+
+pub type c_void = std::ffi::c_void;

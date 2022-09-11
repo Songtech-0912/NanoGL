@@ -5,30 +5,29 @@
 #![allow(non_upper_case_globals)]
 #![allow(unused_assignments)]
 #![allow(unused_mut)]
+#![allow(clashing_extern_declarations)]
 #![feature(c_variadic)]
 #![feature(extern_types)]
 #![feature(label_break_value)]
 
-// Add in once cffi is done
 pub mod cffi;
+pub mod gl;
+pub mod ngl;
 pub mod tigr;
+pub use gl::types::*;
 
-pub const GL_VERTEX_SHADER: u32 = 0x8B31 as libc::c_int as tigr::GLenum;
-pub const GL_FRAGMENT_SHADER: u32 = 0x8B30 as libc::c_int as tigr::GLenum;
+pub const GL_VERTEX_SHADER: u32 = 0x8B31 as cffi::c_int as GLenum;
+pub const GL_FRAGMENT_SHADER: u32 = 0x8B30 as cffi::c_int as GLenum;
 
-// pub fn get_opengl_version() {}
-
-// pub fn get_glsl_version() {}
-
-pub fn create_vertex_shader() -> tigr::GLenum {
+pub fn create_vertex_shader() -> GLenum {
     unsafe { tigr::glCreateShader(GL_VERTEX_SHADER) }
 }
 
-pub fn create_fragment_shader() -> tigr::GLenum {
+pub fn create_fragment_shader() -> GLenum {
     unsafe { tigr::glCreateShader(GL_FRAGMENT_SHADER) }
 }
 
-pub fn create_shader_program(vertex_src: &str, fragment_src: &str) {}
+// pub fn create_shader_program(vertex_src: &str, fragment_src: &str) {}
 
 pub fn create_vao() {
     let mut vao = 0;
@@ -51,10 +50,10 @@ impl GLWindow {
     pub fn new(width: i32, height: i32, title: &str, flag: i32) -> GLWindow {
         let window_ptr: *mut tigr::Tigr = unsafe {
             tigr::tigrWindow(
-                width as libc::c_int,
-                height as libc::c_int,
-                title.as_bytes().as_ptr() as *const libc::c_char,
-                flag as libc::c_int,
+                width as cffi::c_int,
+                height as cffi::c_int,
+                title.as_bytes().as_ptr() as *const cffi::c_char,
+                flag as cffi::c_int,
             )
         };
         GLWindow {
@@ -94,11 +93,17 @@ impl GLWindow {
             tigr::tigrPrint(
                 self.window_ptr,
                 font,
-                x as libc::c_int,
-                y as libc::c_int,
+                x as cffi::c_int,
+                y as cffi::c_int,
                 rgb(color.0, color.1, color.2),
-                text.as_bytes().as_ptr() as *const libc::c_char,
+                text.as_bytes().as_ptr() as *const cffi::c_char,
             );
+        }
+    }
+
+    pub fn begin_gl(&self) {
+        unsafe {
+            tigr::tigrBeginOpenGL(self.window_ptr);
         }
     }
 
@@ -112,9 +117,9 @@ impl GLWindow {
 pub fn rgb(r: i32, g: i32, b: i32) -> tigr::TPixel {
     unsafe {
         tigr::tigrRGB(
-            r as libc::c_int as libc::c_uchar,
-            g as libc::c_int as libc::c_uchar,
-            b as libc::c_int as libc::c_uchar,
+            r as cffi::c_int as cffi::c_uchar,
+            g as cffi::c_int as cffi::c_uchar,
+            b as cffi::c_int as cffi::c_uchar,
         )
     }
 }

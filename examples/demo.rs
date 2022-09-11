@@ -1,21 +1,18 @@
-use nanogl;
-use nanogl::tigr::tfont;
+use nanogl::ngl::*;
+use nanogl::GLWindow;
 
 pub fn main() {
-    let window: nanogl::GLWindow = nanogl::GLWindow::new(320, 240, "Window 1", 0);
+    let window: GLWindow = GLWindow::new(320, 240, "Window 1", 0);
+    println!("OpenGL Renderer: {}", glGetString(GL_RENDERER));
+    println!("OpenGL Version: {}", glGetString(GL_VERSION));
+    println!("GLSL Version: {}", glGetString(GL_SHADING_LANGUAGE_VERSION));
     while window.is_running() {
-        window.clear(nanogl::RGBColor(128, 144, 160));
-        // Currently tfont is a mut static TigrFont, so it isn't thread-safe,
-        // this will be fixed eventually
-        unsafe {
-            window.print_bitmap(
-                tfont,
-                120,
-                110,
-                nanogl::RGBColor(255, 255, 255),
-                "Hello world!",
-            );
-        }
+        window.begin_gl();
+
+        // Very basic OpenGL code
+        glClearColor(1.0, 1.0, 1.0, 1.0);
+        glClear(GL_COLOR_BUFFER_BIT);
+
         window.update();
     }
     window.cleanup();
