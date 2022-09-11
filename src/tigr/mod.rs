@@ -1,4 +1,4 @@
-use libc;
+use crate::cffi as libc;
 
 extern "C" {
     pub type __GLXcontextRec;
