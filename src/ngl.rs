@@ -37,3 +37,38 @@ pub fn glBindVertexArray(array: u32) {
         gl::glBindVertexArray(array);
     }
 }
+
+pub fn glGenBuffers(n: i32, arrays: u32) {
+    unsafe {
+        gl::glGenBuffers(n, arrays as *mut u32);
+    }
+}
+
+pub fn glBindBuffer(target: u32, buffer: u32) {
+    unsafe {
+        gl::glBindBuffer(target, buffer);
+    }
+}
+
+pub fn glBufferData(target: u32, size: usize, data: &[f32], usage: u32) {
+    unsafe { gl::glBufferData(target, size as isize, data.as_ptr().cast(), usage) }
+}
+
+pub fn glCreateShader(shader_type: GLenum) -> GLuint {
+    unsafe { gl::glCreateShader(shader_type) }
+}
+
+pub fn glShaderSource(shader: u32, count: i32, shader_src: &str) {
+    unsafe {
+        gl::glShaderSource(
+            shader,
+            count,
+            shader_src.as_bytes().as_ptr().cast(),
+            shader_src.len() as *const i32,
+        )
+    }
+}
+
+pub fn glCompileShader(shader: GLuint) {
+    unsafe { gl::glCompileShader(shader) }
+}

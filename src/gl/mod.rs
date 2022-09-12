@@ -13,7 +13,7 @@ extern "C" {
     pub fn glGenBuffers(n: GLsizei, buffers: *mut GLuint);
     pub fn glBindBuffer(target: GLenum, buffer: GLuint);
     pub fn glBufferData(target: GLenum, size: GLsizeiptr, data: *const GLvoid, usage: GLenum);
-    pub fn glCreateShader(shader_type: GLenum);
+    pub fn glCreateShader(shader_type: GLenum) -> GLuint;
     pub fn glShaderSource(shader: GLuint, count: GLsizei, str: *const GLchar, len: *const GLint);
     pub fn glCompileShader(shader: GLuint);
     pub fn glGetShaderiv(shader: GLuint, pname: GLenum, params: *mut GLint);

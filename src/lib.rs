@@ -16,26 +16,6 @@ pub mod ngl;
 pub mod tigr;
 pub use gl::types::*;
 
-pub const GL_VERTEX_SHADER: u32 = 0x8B31 as cffi::c_int as GLenum;
-pub const GL_FRAGMENT_SHADER: u32 = 0x8B30 as cffi::c_int as GLenum;
-
-pub fn create_vertex_shader() -> GLenum {
-    unsafe { tigr::glCreateShader(GL_VERTEX_SHADER) }
-}
-
-pub fn create_fragment_shader() -> GLenum {
-    unsafe { tigr::glCreateShader(GL_FRAGMENT_SHADER) }
-}
-
-// pub fn create_shader_program(vertex_src: &str, fragment_src: &str) {}
-
-pub fn create_vao() {
-    let mut vao = 0;
-    unsafe { tigr::glGenVertexArrays(1, &mut vao) };
-}
-
-// pub fn create_vbo(vertices: &[f32]) {}
-
 pub struct RGBColor(pub i32, pub i32, pub i32);
 
 pub struct GLWindow {

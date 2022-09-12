@@ -1,7 +1,7 @@
 use nanogl::ngl::*;
 use nanogl::GLWindow;
 
-// const VERT_SHADER_SRC: &str = include_str!("shaders/triangle.vert");
+const VERT_SHADER_SRC: &str = include_str!("shaders/triangle.vert");
 // const FRAG_SHADER_SRC: &str = include_str!("shaders/triangle.frag");
 
 pub fn main() {
@@ -12,7 +12,7 @@ pub fn main() {
     while window.is_running() {
         window.begin_gl();
 
-        let _vertices: [f32; 6] = [0.0, 0.5, 0.5, -0.5, -0.5, -0.5];
+        let vertices: [f32; 6] = [0.0, 0.5, 0.5, -0.5, -0.5, -0.5];
 
         // Create VAO
         let vao = 0;
@@ -20,6 +20,15 @@ pub fn main() {
         glBindVertexArray(vao);
 
         // Create VBO
+        let vbo = 0;
+        glGenBuffers(1, vbo);
+        glBindBuffer(GL_ARRAY_BUFFER, vbo);
+        glBufferData(GL_ARRAY_BUFFER, vertices.len(), &vertices, GL_STATIC_DRAW);
+
+        // Create vertex shader
+        let vertex_shader: GLuint = glCreateShader(GL_VERTEX_SHADER);
+        glShaderSource(vertex_shader, 1, &VERT_SHADER_SRC);
+        glCompileShader(vertex_shader);
 
         window.update();
     }
