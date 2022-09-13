@@ -129,18 +129,18 @@ extern "C" {
     ) -> libc::c_int;
     fn XCreateIC(_: XIM, _: ...) -> XIC;
     fn XSetICFocus(_: XIC);
-    pub fn glBindBuffer(target: GLenum, buffer: GLuint);
-    pub fn glGenBuffers(n: GLsizei, buffers: *mut GLuint);
-    pub fn glBufferData(target: GLenum, size: GLsizeiptr, data: *const libc::c_void, usage: GLenum);
-    pub fn glAttachShader(program: GLuint, shader: GLuint);
-    pub fn glCompileShader(shader: GLuint);
-    pub fn glCreateProgram() -> GLuint;
-    pub fn glCreateShader(type_0: GLenum) -> GLuint;
-    pub fn glDeleteProgram(program: GLuint);
-    pub fn glDeleteShader(shader: GLuint);
-    pub fn glEnableVertexAttribArray(index: GLuint);
-    pub fn glGetProgramiv(program: GLuint, pname: GLenum, params: *mut GLint);
-    pub fn glGetProgramInfoLog(
+    fn glBindBuffer(target: GLenum, buffer: GLuint);
+    fn glGenBuffers(n: GLsizei, buffers: *mut GLuint);
+    fn glBufferData(target: GLenum, size: GLsizeiptr, data: *const libc::c_void, usage: GLenum);
+    fn glAttachShader(program: GLuint, shader: GLuint);
+    fn glCompileShader(shader: GLuint);
+    fn glCreateProgram() -> GLuint;
+    fn glCreateShader(type_0: GLenum) -> GLuint;
+    fn glDeleteProgram(program: GLuint);
+    fn glDeleteShader(shader: GLuint);
+    fn glEnableVertexAttribArray(index: GLuint);
+    fn glGetProgramiv(program: GLuint, pname: GLenum, params: *mut GLint);
+    fn glGetProgramInfoLog(
         program: GLuint,
         bufSize: GLsizei,
         length: *mut GLsizei,

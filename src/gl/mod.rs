@@ -14,7 +14,12 @@ extern "C" {
     pub fn glBindBuffer(target: GLenum, buffer: GLuint);
     pub fn glBufferData(target: GLenum, size: GLsizeiptr, data: *const GLvoid, usage: GLenum);
     pub fn glCreateShader(shader_type: GLenum) -> GLuint;
-    pub fn glShaderSource(shader: GLuint, count: GLsizei, str: *const GLchar, len: *const GLint);
+    pub fn glShaderSource(
+        shader: GLuint,
+        count: GLsizei,
+        str: *const *const GLchar,
+        len: *const GLint,
+    );
     pub fn glCompileShader(shader: GLuint);
     pub fn glGetShaderiv(shader: GLuint, pname: GLenum, params: *mut GLint);
     pub fn glGetShaderInfoLog(
@@ -23,16 +28,19 @@ extern "C" {
         len: *mut GLsizei,
         info_log: *mut GLchar,
     );
-    pub fn glCreateProgram();
+    pub fn glCreateProgram() -> GLuint;
     pub fn glAttachShader(program: GLuint, shader: GLuint);
-    pub fn glBindFragDataLocation(
-        program: GLuint,
-        color_num: GLuint,
-        index: GLuint,
-        name: *const GLchar,
-    );
+    pub fn glBindFragDataLocation(program: GLuint, color_num: GLuint, name: *const GLchar);
     pub fn glLinkProgram(program: GLuint);
     pub fn glUseProgram(program: GLuint);
-    pub fn glGetAttribLocation(program: GLuint, name: *const GLchar);
+    pub fn glGetAttribLocation(program: GLuint, name: *const GLchar) -> GLint;
+    pub fn glEnableVertexAttribArray(index: GLuint);
+    pub fn glVertexAttribPointer(
+        index: GLuint,
+        size: GLint,
+        ptr_type: GLenum,
+        normalized: GLboolean,
+        pointer: *const GLvoid,
+    );
     pub fn glDrawArrays(mode: GLenum, first: GLint, count: GLsizei);
 }

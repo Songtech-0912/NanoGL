@@ -10,8 +10,11 @@
 #![feature(extern_types)]
 #![feature(label_break_value)]
 
-pub mod cffi;
-pub mod gl;
+// Don't expose unsafe raw FFI functions/types
+// in the public-facing API (no one should be
+// using them anyway)
+mod cffi;
+mod gl;
 pub mod ngl;
 pub mod tigr;
 pub use gl::types::*;
@@ -32,7 +35,7 @@ impl GLWindow {
             tigr::tigrWindow(
                 width as cffi::c_int,
                 height as cffi::c_int,
-                title.as_bytes().as_ptr() as *const cffi::c_char,
+                title.as_bytes().as_ptr().cast() as *const cffi::c_char,
                 flag as cffi::c_int,
             )
         };
