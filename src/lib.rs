@@ -8,7 +8,6 @@
 #![allow(clashing_extern_declarations)]
 #![feature(c_variadic)]
 #![feature(extern_types)]
-#![feature(label_break_value)]
 
 // Don't expose unsafe raw FFI functions/types
 // in the public-facing API (no one should be
@@ -18,6 +17,7 @@ mod gl;
 pub mod ngl;
 pub mod tigr;
 pub use gl::types::*;
+use std::ffi::CString;
 
 pub struct RGBColor(pub i32, pub i32, pub i32);
 
@@ -31,11 +31,14 @@ pub struct GLWindow {
 
 impl GLWindow {
     pub fn new(width: i32, height: i32, title: &str, flag: i32) -> GLWindow {
+        // To prevent memory errors we have to make a dedicated cstring
+        // to pass to tigrWindow
+        let title_str = CString::new(title).unwrap();
         let window_ptr: *mut tigr::Tigr = unsafe {
             tigr::tigrWindow(
                 width as cffi::c_int,
                 height as cffi::c_int,
-                title.as_bytes().as_ptr().cast() as *const cffi::c_char,
+                title_str.as_ptr(),
                 flag as cffi::c_int,
             )
         };
